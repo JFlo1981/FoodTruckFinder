@@ -85,7 +85,7 @@ const Header = () => {
         ) : null}
       </Box>
 
-      <Box p={4}>Collapsable search bar?</Box>
+      {/* <Box p={4}>Collapsable search bar?</Box> */}
     </div>
   );
 };
