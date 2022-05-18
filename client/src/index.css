@@ -25,3 +25,7 @@ code {
 .topSpace {
   margin-top: 40px;
 }
+
+.smallLeft {
+  margin-left: 5px;
+}
