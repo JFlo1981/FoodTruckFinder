@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Footer from "./components/Footer";
+import NoMatch from "./pages/NoMatch";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
+              <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
           <Footer />
