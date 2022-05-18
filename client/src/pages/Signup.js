@@ -31,7 +31,7 @@ const Signup = () => {
       <Stack spacing={8} mx={"auto"} maxW={"lg"} py={12} px={6}>
         <Stack align={"center"}>
           <Heading fontSize={"4xl"} textAlign={"center"}>
-            Sign up
+            Create an account
           </Heading>
           <Text fontSize={"lg"} color={"gray.600"}>
             to enjoy all of our cool features 🌮 🍻
@@ -93,7 +93,10 @@ const Signup = () => {
             </Stack>
             <Stack pt={6}>
               <Text align={"center"}>
-                Already a user? <Link color={"blue.400"}>Login</Link>
+                Already a user?{" "}
+                <Link color={"blue.400"} href="/login">
+                  Login
+                </Link>
               </Text>
             </Stack>
           </Stack>

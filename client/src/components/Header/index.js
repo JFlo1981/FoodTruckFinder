@@ -27,7 +27,7 @@ const Header = () => {
         textDecoration: "none",
         bg: useColorModeValue("gray.200", "gray.700"),
       }}
-      href={"#"}
+      href={"/purple"}
     >
       {children}
     </Link>
@@ -45,7 +45,20 @@ const Header = () => {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box>Logo</Box>
+            <Box>
+              <Link
+                px={2}
+                py={1}
+                rounded={"md"}
+                _hover={{
+                  textDecoration: "none",
+                  bg: useColorModeValue("gray.200", "gray.700"),
+                }}
+                href={"/"}
+              >
+                Logo
+              </Link>
+            </Box>
             <HStack
               as={"nav"}
               spacing={4}
@@ -63,12 +76,11 @@ const Header = () => {
                 fontWeight={600}
                 color={"white"}
                 bg={"pink.400"}
-                href={"#"}
                 _hover={{
                   bg: "pink.300",
                 }}
               >
-                Sign Up
+                <Link href={"/signup"}>Sign Up</Link>
               </Button>
             </Menu>
           </Flex>

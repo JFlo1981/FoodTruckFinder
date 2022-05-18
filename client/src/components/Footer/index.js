@@ -24,9 +24,15 @@ export default function SmallWithNavigation() {
       >
         <Text>©2022 Food Truck Finder. All rights reserved</Text>
         <Stack direction={"row"} spacing={6}>
-          <Link href={"#"}>Github</Link>
-          <Link href={"#"}>About Us</Link>
-          <Link href={"#"}>Terms of Use</Link>
+          <Link
+            href={"https://github.com/JFlo1981/FoodTruckFinder"}
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Github
+          </Link>
+          <Link href={"/about"}>About Us</Link>
+          <Link href={"/terms"}>Terms of Use</Link>
         </Stack>
       </Container>
     </Box>

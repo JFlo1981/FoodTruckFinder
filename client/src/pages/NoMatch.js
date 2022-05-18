@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Box, Heading, Text, Button } from "@chakra-ui/react";
+import { Box, Heading, Text, Button, Link } from "@chakra-ui/react";
 
 export default function NoMatch() {
   return (
-    <div>
+    <div className="noMatch">
       <Box textAlign="center" py={10} px={6}>
         <Heading
           display="inline-block"
@@ -28,7 +28,7 @@ export default function NoMatch() {
           color="white"
           variant="solid"
         >
-          Go to Home
+          <Link href={"/"}>Go to Home</Link>
         </Button>
       </Box>
       <img

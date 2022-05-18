@@ -17,3 +17,11 @@ code {
   margin: auto;
   padding-bottom: 20px;
 }
+
+.noMatch {
+  min-height: 80vh;
+}
+
+.topSpace {
+  margin-top: 40px;
+}
