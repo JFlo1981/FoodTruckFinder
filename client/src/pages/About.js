@@ -9,6 +9,7 @@ import {
   StackDivider,
   useColorModeValue,
 } from "@chakra-ui/react";
+
 export default function SplitWithImage() {
   return (
     <Container maxW={"5xl"} py={12}>
