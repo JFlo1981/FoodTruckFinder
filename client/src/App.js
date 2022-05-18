@@ -2,12 +2,14 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
+          <Header />
           <div className="container">
             <Routes>
               <Route path="/" element={<Home />} />
