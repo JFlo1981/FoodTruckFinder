@@ -126,7 +126,11 @@ const resolvers = {
           return newUser;
         }
       throw new AuthenticationError('You need to be logged in!');
-    }
+    }, 
+    // editLocation: => {},
+    // editHours: => {},
+    // editMenu: => {}
+    
   }
 };
 

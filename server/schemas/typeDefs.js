@@ -57,6 +57,11 @@ const typeDefs = gql`
     addTruck(owners: [String], description: String, truckId: String, image: String, link: String, truckName: String): Auth
     removeTruck (truckId: String!): Auth
   }
+  
 `;
+// type Mutation ---add---
+// editLocation
+// editHours
+// editMenu
 
 module.exports = typeDefs;
