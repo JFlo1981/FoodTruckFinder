@@ -1,0 +1,19 @@
+{
+  "name": "foodtruckfinder",
+  "version": "1.0.0",
+  "description": "An app to locate, review and save food trucks\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JFlo1981/FoodTruckFinder.git"
+  },
+  "author": "ED, BB, JK, JF",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JFlo1981/FoodTruckFinder/issues"
+  },
+  "homepage": "https://github.com/JFlo1981/FoodTruckFinder#readme"
+}
