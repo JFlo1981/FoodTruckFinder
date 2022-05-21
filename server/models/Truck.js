@@ -20,7 +20,7 @@ const truckSchema = new Schema({
   link: {
     type: String,
   },
-  title: {
+  truckName: {
     type: String,
     required: true,
   },
