@@ -24,6 +24,10 @@ const truckSchema = new Schema({
     type: String,
     required: true,
   },
+  location: {
+    type: Number, 
+    required: true
+  }
 });
 
 module.exports = truckSchema;

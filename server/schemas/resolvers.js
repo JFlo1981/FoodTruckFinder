@@ -100,6 +100,32 @@ const resolvers = {
       }
 
       throw new AuthenticationError('You need to be logged in!');
+    },
+    addTruck: async (parent, {owners, description, truckId, image, link, truckName}, context) => {
+      if (context.user) {
+
+       const newUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { savedTrucks: {owners, description, truckId, image, link, truckName} } },
+          { new: true }
+        );
+
+        return newUser;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    }, 
+    removeTruck: async (parent, { truckId }, context) => {
+      if (context.user) {
+        const newUser = await User.findByIdAndUpdate(
+            { _id: context.user._id },
+            { $pull: { savedTrucks: { truckId } } },
+            { new: true }
+          );
+  
+          return newUser;
+        }
+      throw new AuthenticationError('You need to be logged in!');
     }
   }
 };
