@@ -1,5 +1,6 @@
 import React from "react";
-import { Heading, Text } from "@chakra-ui/react";
+import Reviews from "../components/Reviews";
+import { Heading } from "@chakra-ui/react";
 
 function Dashboard() {
   // if the user is not logged in:
@@ -17,6 +18,8 @@ function Dashboard() {
       <Heading textAlign={"center"} marginTop={"10"}>
         "your" Dashboard.
       </Heading>
+
+      <Reviews />
     </div>
   );
 }
