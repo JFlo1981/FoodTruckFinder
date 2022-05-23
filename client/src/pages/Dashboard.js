@@ -1,6 +1,7 @@
 import React from "react";
 import Reviews from "../components/Reviews";
-import { Heading } from "@chakra-ui/react";
+import { Heading, Text, Flex } from "@chakra-ui/react";
+import FriendList from "../components/FriendsList";
 
 function Dashboard() {
   // if the user is not logged in:
@@ -19,7 +20,28 @@ function Dashboard() {
         "your" Dashboard.
       </Heading>
 
-      <Reviews />
+      <Flex
+        direction={{ base: "column-reverse", md: "row" }}
+        width={"full"}
+        marginBottom="10"
+        rounded={"xl"}
+        p={10}
+        justifyContent={"space-evenly"}
+        position={"relative"}
+      >
+        <div>
+          <Text fontSize="18px" mt={3} mb={2} ml={4}>
+            "Your" Reviews:
+          </Text>
+          <Reviews />
+        </div>
+        <div>
+          <Text fontSize="18px" mt={3} mb={2} ml={4}>
+            "Your" Friends:
+          </Text>
+          <FriendList />
+        </div>
+      </Flex>
     </div>
   );
 }
