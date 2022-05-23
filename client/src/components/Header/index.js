@@ -7,14 +7,19 @@ import {
   IconButton,
   Button,
   Menu,
+  Image,
   useDisclosure,
   useColorModeValue,
   Stack,
+  requiredChakraThemeKeys,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 const Header = () => {
-  const Links = ["Account Information", "Favorites"];
+  const Links = [
+    { name: "Account Information", href: "/account" },
+    { name: "Favorites", href: "/favorites" },
+  ];
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -27,7 +32,7 @@ const Header = () => {
         textDecoration: "none",
         bg: useColorModeValue("gray.200", "gray.700"),
       }}
-      href={"/purple"}
+      href={children}
     >
       {children}
     </Link>
@@ -56,7 +61,11 @@ const Header = () => {
                 }}
                 href={"/"}
               >
-                Logo
+                <Image
+                  src={require("../../assets/images/logo1.png")}
+                  alt="truck"
+                  className="logo"
+                />
               </Link>
             </Box>
             <HStack
@@ -65,7 +74,9 @@ const Header = () => {
               display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <NavLink key={link.name} href={link.href}>
+                  {link.name}
+                </NavLink>
               ))}
             </HStack>
           </HStack>
