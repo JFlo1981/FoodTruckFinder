@@ -23,7 +23,7 @@ export default function Reviews() {
             maxW={"640px"}
             direction={{ base: "column-reverse", md: "row" }}
             width={"full"}
-            marginBottom="20px"
+            marginBottom="10"
             rounded={"xl"}
             p={10}
             justifyContent={"space-between"}

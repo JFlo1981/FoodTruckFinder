@@ -15,7 +15,7 @@ function Dashboard() {
 
   return (
     <div>
-      <Heading textAlign={"center"} marginTop={"10"}>
+      <Heading textAlign={"center"} marginTop={"10"} marginBottom={"15"}>
         "your" Dashboard.
       </Heading>
 
