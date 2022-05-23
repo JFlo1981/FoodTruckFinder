@@ -11,14 +11,13 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
-  requiredChakraThemeKeys,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 const Header = () => {
   const Links = [
     { name: "Account Information", href: "/account" },
-    { name: "Favorites", href: "/favorites" },
+    { name: "Dashboard", href: "/dashboard" },
   ];
 
   const { isOpen, onOpen, onClose } = useDisclosure();

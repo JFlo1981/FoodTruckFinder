@@ -33,3 +33,10 @@ code {
 .logo {
   height: 170px;
 }
+
+.dashboardError {
+  min-height: 65vh;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 50px;
+}

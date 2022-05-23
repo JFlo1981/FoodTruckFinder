@@ -8,7 +8,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
-import Favorites from "./pages/Favorites";
+import Dashboard from "./pages/Dashboard";
 import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
 
@@ -22,7 +22,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
-              <Route path="/favorites" element={<Favorites />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/about" element={<About />} />
