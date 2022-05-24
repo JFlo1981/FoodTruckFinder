@@ -22,21 +22,6 @@ const Header = () => {
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const NavLink = ({ children }) => (
-    <Link
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
-      }}
-      href={children}
-    >
-      {children}
-    </Link>
-  );
-
   return (
     <div>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
@@ -73,9 +58,18 @@ const Header = () => {
               display={{ base: "none", md: "flex" }}
             >
               {Links.map((link) => (
-                <NavLink key={link.name} href={link.href}>
+                <Link
+                  px={2}
+                  py={1}
+                  rounded={"md"}
+                  _hover={{
+                    textDecoration: "none",
+                    bg: ("gray.200", "gray.700"),
+                  }}
+                  href={link.href}
+                >
                   {link.name}
-                </NavLink>
+                </Link>
               ))}
             </HStack>
           </HStack>
@@ -100,7 +94,18 @@ const Header = () => {
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
               {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
+                <Link
+                  px={2}
+                  py={1}
+                  rounded={"md"}
+                  _hover={{
+                    textDecoration: "none",
+                    bg: ("gray.200", "gray.700"),
+                  }}
+                  href={link.href}
+                >
+                  {link.name}
+                </Link>
               ))}
             </Stack>
           </Box>

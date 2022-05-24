@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
 import Dashboard from "./pages/Dashboard";
+import Account from "./pages/Account";
 import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
 
@@ -23,6 +24,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/account" element={<Account />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/about" element={<About />} />
