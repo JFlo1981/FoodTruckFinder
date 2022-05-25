@@ -12,6 +12,7 @@ import Dashboard from "./pages/Dashboard";
 import Account from "./pages/Account";
 import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
+import SingleTruck from "./pages/singleTruck";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/account" element={<Account />} />
+              <Route path="/trucks" element={<SingleTruck />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/about" element={<About />} />

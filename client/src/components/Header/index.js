@@ -65,7 +65,7 @@ const Header = () => {
                   rounded={"md"}
                   _hover={{
                     textDecoration: "none",
-                    bg: ("gray.200", "gray.700"),
+                    bg: ("gray.200", "gray.300"),
                   }}
                   href={link.href}
                 >
@@ -101,7 +101,7 @@ const Header = () => {
                   rounded={"md"}
                   _hover={{
                     textDecoration: "none",
-                    bg: ("gray.200", "gray.700"),
+                    bg: ("gray.200", "gray.300"),
                   }}
                   href={link.href}
                 >

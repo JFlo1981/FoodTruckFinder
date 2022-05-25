@@ -40,3 +40,18 @@ code {
   margin-right: 50px;
   margin-top: 50px;
 }
+
+.searchResults {
+  border-radius: 20px;
+  position: relative;
+  top: 60vh;
+  background-color: #f7f7fa;
+}
+
+.map {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 70vh;
+  z-index: -1;
+}

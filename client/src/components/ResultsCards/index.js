@@ -47,7 +47,7 @@ export default function resultCards() {
             }}
             marginTop={"5"}
           >
-            <Link href={"#"}>View Truck</Link>
+            <Link href={"/trucks"}>View Truck</Link>
           </Button>
         </Flex>
       </Box>

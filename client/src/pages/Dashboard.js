@@ -15,15 +15,15 @@ function Dashboard() {
   // </Text>)
 
   return (
-    <div>
-      <Heading textAlign={"center"} marginTop={"10"} marginBottom={"15"}>
+    <div className="userDashboard">
+      <Heading textAlign={"center"} paddingTop={"10"} paddingBottom={"15"}>
         "your" Dashboard.
       </Heading>
 
       <Flex
         direction={{ base: "column-reverse", md: "row" }}
         width={"full"}
-        marginBottom="10"
+        paddingBottom="10"
         rounded={"xl"}
         p={10}
         justifyContent={"space-evenly"}

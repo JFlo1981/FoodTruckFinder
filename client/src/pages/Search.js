@@ -1,51 +1,32 @@
 import React from "react";
-import {
-  Box,
-  Heading,
-  Container,
-  Text,
-  Stack,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Heading, Image, Stack, useColorModeValue } from "@chakra-ui/react";
 import ResultCards from "../components/ResultsCards";
 
 function Search() {
   return (
     <div>
-      <Container maxW={"3xl"} height="70vh">
-        <Stack
-          as={Box}
-          textAlign={"center"}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
-        >
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
-            lineHeight={"110%"}
-          >
-            Map Goes <br />
-            <Text as={"span"} color={"green.400"}>
-              here
-            </Text>
-          </Heading>
-        </Stack>
-      </Container>
+      <Image
+        alt={"Login Image"}
+        className={"map"}
+        objectFit={"cover"}
+        src={
+          "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2662"
+        }
+      />
 
-      <Stack
-        bg={useColorModeValue("white", "gray.800")}
-        boxShadow={"lg"}
-        borderTop={"5px solid #c9c9c9"}
-        p={8}
-        rounded={"xl"}
-        align={"center"}
-        pos={"relative"}
-      >
-        <Heading>Results for "City"</Heading>
-        <ResultCards />
-        <ResultCards />
-        <ResultCards />
-      </Stack>
+      <div className="searchResults">
+        <Stack
+          // bg={useColorModeValue("white", "gray.800")}
+
+          p={8}
+          rounded={"xl"}
+          align={"center"}
+          pos={"relative"}
+        >
+          <Heading>Results for "City"</Heading>
+          <ResultCards />
+        </Stack>
+      </div>
     </div>
   );
 }
