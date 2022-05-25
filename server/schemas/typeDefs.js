@@ -59,7 +59,7 @@ const typeDefs = gql`
   }
   
 `;
-// type Mutation ---add---
+// type Mutation
 // editLocation
 // editHours
 // editMenu
