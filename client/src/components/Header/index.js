@@ -18,6 +18,7 @@ const Header = () => {
   const Links = [
     { name: "Account Information", href: "/account" },
     { name: "Dashboard", href: "/dashboard" },
+    { name: "Search for Trucks", href: "/search" },
   ];
 
   const { isOpen, onOpen, onClose } = useDisclosure();
