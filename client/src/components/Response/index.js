@@ -12,6 +12,7 @@ function Response(review) {
               direction={"column"}
               textAlign={"left"}
               justifyContent={"space-between"}
+              key={response.name}
             >
               <chakra.p>
                 <chakra.span

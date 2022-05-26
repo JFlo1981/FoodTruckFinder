@@ -45,7 +45,11 @@ export default function Reviews() {
   ];
 
   if (!reviews.length) {
-    return <h3>No Reviews Yet-</h3>;
+    return (
+      <Box>
+        <chakra.p>Be the First to Leave a Review!</chakra.p>
+      </Box>
+    );
   }
 
   const reply = (
@@ -114,7 +118,7 @@ export default function Reviews() {
                   color={"gray.600"}
                   fontSize={"13px"}
                 >
-                  {"3"} contributions
+                  · {"3"} contributions
                 </chakra.span>
               </chakra.p>
               <chakra.p
