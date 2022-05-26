@@ -5,6 +5,7 @@ const truckSchema = new Schema({
     {
       type: String,
     },
+    // associate by unique identifier (username or email)
   ],
   description: {
     type: String,
@@ -27,6 +28,13 @@ const truckSchema = new Schema({
   location: {
     type: String, 
     required: true
+  }, 
+  hours: {
+    type: String,
+    required: true,
+  }, 
+  menu: {
+    type: String,
   }
 });
 
