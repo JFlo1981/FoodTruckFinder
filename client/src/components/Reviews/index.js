@@ -4,15 +4,18 @@ export default function Reviews() {
   const reviews = [
     {
       name: "user1",
-      content:
-        "It really saves me time and effort. It is exactly what our business has been lacking. EEZY is the most valuable business resource we have EVER purchased. After using EEZY my business skyrocketed!",
+      content: "Loved the Carmel popcorn bag, will definately be coming back!",
     },
     {
       name: "user6785",
       content:
-        "I didn't even need training. We've used EEZY for the last five years. I have gotten at least 50 times the value from EEZY. I made back the purchase price in just 48 hours!",
+        "I didn't even need help picking popcorn. Everything you can order is great!",
     },
   ];
+
+  if (!reviews.length) {
+    return <h3>No Reviews Yet-</h3>;
+  }
 
   return (
     <div>
@@ -23,11 +26,11 @@ export default function Reviews() {
             maxW={"640px"}
             direction={{ base: "column-reverse", md: "row" }}
             width={"full"}
-            marginBottom="10"
             rounded={"xl"}
             p={10}
             justifyContent={"space-between"}
             position={"relative"}
+            key={review.name}
           >
             <Flex
               direction={"column"}
