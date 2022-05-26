@@ -9,7 +9,6 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  HStack,
   InputRightElement,
   Stack,
   Button,
@@ -53,6 +52,8 @@ const Signup = () => {
         variables: { ...formState },
       });
 
+      console.log(data);
+
       Auth.login(data.addUser.token);
     } catch (e) {
       // console.error(e);
@@ -84,24 +85,21 @@ const Signup = () => {
         >
           <Stack spacing={4}>
             <form onSubmit={handleFormSubmit}>
-              <HStack>
-                <Box>
-                  <FormControl id="username" isRequired>
-                    <FormLabel>User Name</FormLabel>
-                    <Input
-                      type="username"
-                      placeholder="Your username"
-                      name="username"
-                      value={formState.username}
-                      onChange={handleChange}
-                    />
-                  </FormControl>
-                </Box>
-              </HStack>
+              <FormControl id="username" isRequired>
+                <FormLabel>Username</FormLabel>
+                <Input
+                  type="username"
+                  placeholder="Your username"
+                  name="username"
+                  value={formState.username}
+                  onChange={handleChange}
+                />
+              </FormControl>
+
               <FormControl id="email" isRequired>
                 <FormLabel>Email address</FormLabel>
                 <Input
-                  placeholder="Your email"
+                  placeholder="example@example.com"
                   name="email"
                   type="email"
                   id="email"
@@ -109,6 +107,7 @@ const Signup = () => {
                   onChange={handleChange}
                 />
               </FormControl>
+
               <FormControl id="password" isRequired>
                 <FormLabel>Password</FormLabel>
                 <InputGroup>
