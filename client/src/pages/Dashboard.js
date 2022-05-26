@@ -35,12 +35,12 @@ function Dashboard() {
           </Text>
           <Reviews />
         </div>
-        <div>
+        {/* <div>
           <Text fontSize="18px" mt={3} mb={2} ml={4}>
             "Your" Friends:
           </Text>
           <FriendList />
-        </div>
+        </div> */}
       </Flex>
     </div>
   );

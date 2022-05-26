@@ -41,9 +41,9 @@ code {
   margin-top: 50px;
 }
 
-.searchResults {
+/* .searchResults {
   border-radius: 20px;
-  position: relative;
+  position: absolute;
   top: 60vh;
   background-color: #f7f7fa;
 }
@@ -54,4 +54,4 @@ code {
   left: 0;
   height: 70vh;
   z-index: -1;
-}
+} */
