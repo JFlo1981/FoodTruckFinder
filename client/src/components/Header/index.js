@@ -9,15 +9,19 @@ import {
   Menu,
   Image,
   useDisclosure,
+  useColorMode,
   useColorModeValue,
   Stack,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Auth from "../../utils/auth";
 
 const Header = () => {
   // Mobile Nav definitions through Chakra UI Hook
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // Light/Darkmode Chakra UI Hook
+  const { colorMode, toggleColorMode } = useColorMode();
 
   // User Dashboard Link
   const userLinks = (
@@ -98,8 +102,13 @@ const Header = () => {
             </HStack>
           </HStack>
 
-          {/* SignUp/Logout Button */}
           <Flex alignItems={"center"}>
+            {/* Light/Dark Mode Button */}
+            <Button onClick={toggleColorMode}>
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            </Button>
+
+            {/* SignUp/Logout Button */}
             <Menu>
               <Button
                 fontSize={"sm"}

@@ -40,6 +40,7 @@ class AuthService {
 
   // retrieve data saved in token
   getProfile() {
+    // console.log(decode(this.getToken()));
     return decode(this.getToken());
   }
 
