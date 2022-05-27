@@ -7,31 +7,30 @@ function Response(review) {
     <div>
       {responses &&
         responses.map((response) => (
-          <Box marginTop={2} paddingLeft={4}>
+          <Box marginTop={4} paddingLeft={4}>
             <Flex
               direction={"column"}
               textAlign={"left"}
               justifyContent={"space-between"}
               key={response.name}
             >
-              <chakra.p>
-                <chakra.span
-                  fontSize={"13px"}
-                  fontFamily={"Inter"}
-                  fontWeight={"medium"}
-                >
-                  Response from <span className="bold">{response.name}</span>
-                </chakra.span>
-              </chakra.p>
-
               <chakra.p
                 fontFamily={"Inter"}
                 fontWeight={"medium"}
                 fontSize={"17px"}
                 pb={4}
-                marginTop={7}
+                marginTop={3}
               >
                 "{response.content}"
+              </chakra.p>
+              <chakra.p textAlign={"right"}>
+                <chakra.span
+                  fontSize={"13px"}
+                  fontFamily={"Inter"}
+                  fontWeight={"medium"}
+                >
+                  <span className="bold">{response.name}</span> Responded
+                </chakra.span>
               </chakra.p>
               <hr></hr>
             </Flex>

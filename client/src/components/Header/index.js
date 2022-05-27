@@ -108,7 +108,7 @@ const Header = () => {
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
             </Button>
 
-            {/* SignUp/Logout Button */}
+            {/* Login/Auth Portal Button */}
             <Menu>
               <Button
                 fontSize={"sm"}
@@ -124,7 +124,7 @@ const Header = () => {
                     Logout
                   </a>
                 ) : (
-                  <a href="/signup">Sign Up</a>
+                  <a href="/portal">Sign In</a>
                 )}
               </Button>
             </Menu>

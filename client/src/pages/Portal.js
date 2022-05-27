@@ -1,0 +1,107 @@
+import React from "react";
+import {
+  Flex,
+  Button,
+  Stack,
+  Heading,
+  Text,
+  useColorModeValue,
+  Box,
+  useDisclosure,
+} from "@chakra-ui/react";
+import Signup from "../components/Signup";
+import Login from "../components/Login";
+
+const Portal = () => {
+  // Displays either Signup Form or Login Form through Chakra UI Hook
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const signupActive = (
+    <Flex>
+      <Button
+        borderRadius="0px"
+        variant="ghost"
+        className="loginToggle"
+        isDisabled={"true"}
+      >
+        Sign up
+      </Button>
+      <Button
+        borderRadius="0px"
+        variant="ghost"
+        className="loginToggle"
+        bg={"#f7fafc"}
+        _hover={{ bg: "#E2E8F0" }}
+        boxShadow={"inset 2px 0px 1px #E2E8F0"}
+      >
+        Log in
+      </Button>
+    </Flex>
+  );
+
+  const loginActive = (
+    <Flex>
+      <Button
+        borderRadius="0px"
+        variant="ghost"
+        className="loginToggle"
+        bg={"#f7fafc"}
+        _hover={{ bg: "#E2E8F0" }}
+        boxShadow={"inset -2px 0px 1px #E2E8F0"}
+      >
+        Sign up
+      </Button>
+      <Button
+        borderRadius="0px"
+        variant="ghost"
+        className="loginToggle"
+        isDisabled={"true"}
+      >
+        Log in
+      </Button>
+    </Flex>
+  );
+
+  return (
+    <div>
+      <Flex
+        minH={"100vh"}
+        align={"center"}
+        justify={"center"}
+        bg={useColorModeValue("gray.50", "gray.800")}
+      >
+        <Stack spacing={4} mx={"auto"} py={12} px={3} className="signUpForm">
+          <Stack align={"center"} textAlign={"center"}>
+            <Heading fontSize={"4xl"}>FoodTruckFinder 🌮</Heading>
+            <Text fontSize={"lg"} color={"gray.600"}>
+              Search for trucks, get access to reviews, and satisfy your
+              cravings.
+            </Text>
+          </Stack>
+          <Box
+            rounded={"lg"}
+            bg={useColorModeValue("white", "gray.700")}
+            boxShadow={"lg"}
+          >
+            {signupActive}
+            <Box p={8}>
+              <Signup />
+              {/* <Login /> */}
+            </Box>
+          </Box>
+          {/* Login Link */}
+          {/* <Stack pt={6}>
+            <Text align={"center"}>
+              Already a user?{" "}
+              <Link color={"blue.400"} href="/login">
+                Login
+              </Link>
+            </Text>
+          </Stack> */}
+        </Stack>
+      </Flex>
+    </div>
+  );
+};
+
+export default Portal;

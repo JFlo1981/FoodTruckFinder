@@ -11,8 +11,6 @@ import { setContext } from "@apollo/client/link/context";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Header from "./components/Header";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
 import Dashboard from "./pages/Dashboard";
@@ -21,6 +19,7 @@ import TruckReviews from "./pages/TruckReviews";
 import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
 import SingleTruck from "./pages/singleTruck";
+import Portal from "./pages/Portal";
 
 // Establish a new link to the GraphQL server
 const httpLink = createHttpLink({
@@ -54,13 +53,12 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
+              <Route path="/portal" element={<Portal />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/:username" element={<Dashboard />} />
               <Route path="/account/:id" element={<Account />} />
-              <Route path="/truck/:id" element={<SingleTruck />} />
+              <Route path="/truck" element={<SingleTruck />} />
               <Route path="/truck/reviews" element={<TruckReviews />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
               <Route path="/about" element={<About />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="*" element={<NoMatch />} />

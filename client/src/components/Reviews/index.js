@@ -105,31 +105,23 @@ export default function Reviews() {
               textAlign={"left"}
               justifyContent={"space-between"}
             >
-              <chakra.p>
-                <chakra.span fontFamily={"Inter"} fontWeight={"medium"}>
-                  <span className="bold">{review.name}</span> wrote this review
-                  on {review.date}
-                </chakra.span>
-              </chakra.p>
-              <chakra.p>
-                <chakra.span
+              <div>
+                <chakra.p
                   fontFamily={"Inter"}
                   fontWeight={"medium"}
-                  color={"gray.600"}
-                  fontSize={"13px"}
+                  fontSize={"17px"}
+                  pb={4}
+                  marginTop={7}
                 >
-                  · {"3"} contributions
-                </chakra.span>
-              </chakra.p>
-              <chakra.p
-                fontFamily={"Inter"}
-                fontWeight={"medium"}
-                fontSize={"17px"}
-                pb={4}
-                marginTop={7}
-              >
-                "{review.content}"
-              </chakra.p>
+                  "{review.content}"
+                </chakra.p>
+                <chakra.p textAlign={"right"}>
+                  <chakra.span fontFamily={"Inter"} fontWeight={"medium"}>
+                    <span className="bold">{review.name}</span> wrote this
+                    review on {review.date}
+                  </chakra.span>
+                </chakra.p>
+              </div>
               <hr></hr>
 
               {!review.response ? <></> : <Response {...review} />}

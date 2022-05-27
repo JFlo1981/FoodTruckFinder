@@ -59,3 +59,16 @@ code {
   width: 70%;
   max-width: 500px;
 }
+
+.ReviewCard {
+  background-color: #38b2ac;
+  color: white;
+}
+
+.loginToggle {
+  width: 50%;
+}
+
+.inActive {
+  color: black;
+}

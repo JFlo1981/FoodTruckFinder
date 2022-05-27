@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-// import Reviews from "../components/Reviews";
+import Reviews from "../components/Reviews";
 import { Heading, Text, Flex } from "@chakra-ui/react";
 import { useQuery } from "@apollo/client";
 import { USER_QUERY, ME_QUERY } from "../utils/queries";
@@ -48,7 +48,7 @@ function Dashboard() {
           <Text fontSize="18px" mt={3} mb={2} ml={4}>
             {userParam ? `${user.username}'s` : `Your`} Reviews:
           </Text>
-          {/* <Reviews /> */}
+          <Reviews />
         </div>
       </Flex>
     </div>
