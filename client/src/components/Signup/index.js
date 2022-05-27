@@ -110,7 +110,7 @@ const Signup = () => {
           </FormControl>
 
           {/* Submit Button */}
-          <Stack spacing={10} pt={2}>
+          <Stack spacing={10} pt={2} marginTop={5}>
             <Button
               type="submit"
               size="lg"

@@ -50,7 +50,7 @@ const Login = () => {
     <Stack spacing={4}>
       <form onSubmit={handleFormSubmit}>
         {/* Email input */}
-        <FormControl id="email">
+        <FormControl id="email" isRequired>
           <FormLabel>Email address</FormLabel>
           <Input
             placeholder="example@example.com"
@@ -63,7 +63,7 @@ const Login = () => {
         </FormControl>
 
         {/* Password input */}
-        <FormControl id="password">
+        <FormControl id="password" isRequired>
           <FormLabel>Password</FormLabel>
           <Input
             type="password"

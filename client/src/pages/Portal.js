@@ -30,9 +30,10 @@ const Portal = () => {
         borderRadius="0px"
         variant="ghost"
         className="loginToggle"
-        bg={"#f7fafc"}
+        bg={useColorModeValue("#f7fafc", "gray.600")}
         _hover={{ bg: "#E2E8F0" }}
         boxShadow={"inset 2px 0px 1px #E2E8F0"}
+        onClick={isOpen ? onClose : onOpen}
       >
         Log in
       </Button>
@@ -45,9 +46,10 @@ const Portal = () => {
         borderRadius="0px"
         variant="ghost"
         className="loginToggle"
-        bg={"#f7fafc"}
+        bg={useColorModeValue("#f7fafc", "gray.600")}
         _hover={{ bg: "#E2E8F0" }}
         boxShadow={"inset -2px 0px 1px #E2E8F0"}
+        onClick={isOpen ? onClose : onOpen}
       >
         Sign up
       </Button>
@@ -83,11 +85,8 @@ const Portal = () => {
             bg={useColorModeValue("white", "gray.700")}
             boxShadow={"lg"}
           >
-            {signupActive}
-            <Box p={8}>
-              <Signup />
-              {/* <Login /> */}
-            </Box>
+            {isOpen ? loginActive : signupActive}
+            <Box p={8}>{isOpen ? <Login /> : <Signup />}</Box>
           </Box>
           {/* Login Link */}
           {/* <Stack pt={6}>
