@@ -16,6 +16,10 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import Auth from "../../utils/auth";
 
 const Header = () => {
+  // Mobile Nav definitions through Chakra UI Hook
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // User Dashboard Link
   const userLinks = (
     <Link
       px={2}
@@ -33,13 +37,12 @@ const Header = () => {
 
   // const ownerLinks = [{ name: "Account Information", href: "/account" }];
 
+  // On submit of Logout Buttom, attempt sign User out
+  // Will reload to the homepage
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
-
-  // Mobile Nav definitions through Chakra UI Hook
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <div>
