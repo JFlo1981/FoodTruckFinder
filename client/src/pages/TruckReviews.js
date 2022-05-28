@@ -14,7 +14,7 @@ const TruckReviews = () => {
 
       <ReviewForm />
 
-      <Reviews />
+      {/* <Reviews /> */}
     </div>
   );
 };
