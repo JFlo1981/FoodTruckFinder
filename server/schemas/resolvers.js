@@ -127,14 +127,17 @@ const resolvers = {
         }
       throw new AuthenticationError('You need to be logged in!');
     }, 
-     editTruck: async (parent, { truckId }, context) => {
-       if (context.user) {
-           
-       }
-      }
+     
     
     
   }
 };
 
 module.exports = resolvers;
+
+
+// editTruck: async (parent, { truckId }, context) => {
+//   if (context.user) {
+      
+//   }
+//  }
