@@ -3,13 +3,15 @@ import { useMutation } from "@apollo/client";
 import { CREATE_USER } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import {
+  Button,
   FormControl,
   FormLabel,
   Input,
   InputGroup,
   InputRightElement,
+  Link,
   Stack,
-  Button,
+  Text,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
@@ -117,13 +119,19 @@ const Signup = () => {
               bg={"teal.400"}
               color={"white"}
               _hover={{
-                bg: "blue.500",
+                bg: "teal.500",
               }}
             >
               Create An Account
             </Button>
           </Stack>
         </form>
+        <Text align={"center"} fontSize={"11px"}>
+          By signing up you agree to our{" "}
+          <Link color={"blue.400"} href="/terms">
+            Terms of Use
+          </Link>
+        </Text>
         {error && <div>Sign up failed</div>}
       </Stack>
     </div>

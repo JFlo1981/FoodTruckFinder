@@ -3,13 +3,14 @@ import { useMutation } from "@apollo/client";
 import { USER_LOGIN } from "../../utils/mutations";
 import Auth from "../../utils/auth";
 import {
+  Button,
+  Checkbox,
   FormControl,
   FormLabel,
   Input,
-  Checkbox,
-  Stack,
   Link,
-  Button,
+  Stack,
+  Text,
 } from "@chakra-ui/react";
 
 const Login = () => {
@@ -91,14 +92,17 @@ const Login = () => {
             bg={"teal.400"}
             color={"white"}
             _hover={{
-              bg: "blue.500",
+              bg: "teal.500",
             }}
           >
             Login
           </Button>
         </Stack>
-        {error && <div>Login failed</div>}
       </form>
+      <Text align={"center"} fontSize={"11px"}>
+        Welcome Back! 🎉
+      </Text>
+      {error && <div>Login failed</div>}
     </Stack>
   );
 };

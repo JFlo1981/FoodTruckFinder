@@ -147,7 +147,7 @@ const Header = () => {
               >
                 {"Search for Trucks"}
               </Link>
-              {Auth.loggedIn() ? <>{userLinks}</> : <></>}
+              {Auth.loggedIn() ? <>{userLinks}</> : null}
             </Stack>
           </Box>
         ) : null}

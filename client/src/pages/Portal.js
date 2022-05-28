@@ -1,12 +1,13 @@
 import React from "react";
 import {
-  Flex,
+  Box,
   Button,
-  Stack,
+  Flex,
   Heading,
+  Link,
+  Stack,
   Text,
   useColorModeValue,
-  Box,
   useDisclosure,
 } from "@chakra-ui/react";
 import Signup from "../components/Signup";
@@ -22,7 +23,7 @@ const Portal = () => {
         borderRadius="0px"
         variant="ghost"
         className="loginToggle"
-        isDisabled={"true"}
+        isDisabled={true}
       >
         Sign up
       </Button>
@@ -30,7 +31,7 @@ const Portal = () => {
         borderRadius="0px"
         variant="ghost"
         className="loginToggle"
-        bg={useColorModeValue("#f7fafc", "gray.600")}
+        bg={useColorModeValue("#f7fafc", "gray.800")}
         _hover={{ bg: "#E2E8F0" }}
         boxShadow={"inset 2px 0px 1px #E2E8F0"}
         onClick={isOpen ? onClose : onOpen}
@@ -46,7 +47,7 @@ const Portal = () => {
         borderRadius="0px"
         variant="ghost"
         className="loginToggle"
-        bg={useColorModeValue("#f7fafc", "gray.600")}
+        bg={useColorModeValue("#f7fafc", "gray.800")}
         _hover={{ bg: "#E2E8F0" }}
         boxShadow={"inset -2px 0px 1px #E2E8F0"}
         onClick={isOpen ? onClose : onOpen}
@@ -57,7 +58,7 @@ const Portal = () => {
         borderRadius="0px"
         variant="ghost"
         className="loginToggle"
-        isDisabled={"true"}
+        isDisabled={true}
       >
         Log in
       </Button>
@@ -88,15 +89,16 @@ const Portal = () => {
             {isOpen ? loginActive : signupActive}
             <Box p={8}>{isOpen ? <Login /> : <Signup />}</Box>
           </Box>
-          {/* Login Link */}
-          {/* <Stack pt={6}>
+
+          {/* Login Link for Owners */}
+          <Stack pt={6}>
             <Text align={"center"}>
-              Already a user?{" "}
-              <Link color={"blue.400"} href="/login">
-                Login
+              Own a Truck? Head to the{" "}
+              <Link color={"blue.400"} href="/portal/owner">
+                Business Portal
               </Link>
             </Text>
-          </Stack> */}
+          </Stack>
         </Stack>
       </Flex>
     </div>
