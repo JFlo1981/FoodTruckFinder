@@ -1,18 +1,88 @@
-import { chakra, Flex } from "@chakra-ui/react";
+import {
+  chakra,
+  Flex,
+  Box,
+  FormControl,
+  FormLabel,
+  Textarea,
+  Button,
+} from "@chakra-ui/react";
+import Response from "../Response";
 
 export default function Reviews() {
   const reviews = [
     {
       name: "user1",
-      content:
-        "It really saves me time and effort. It is exactly what our business has been lacking. EEZY is the most valuable business resource we have EVER purchased. After using EEZY my business skyrocketed!",
+      content: "Loved the Carmel popcorn bag, will definately be coming back!",
+      date: "May 19, 2022",
+      response: [
+        {
+          name: "user 42034",
+          content: "Agreed, try the honey popcorn next time!",
+        },
+      ],
     },
     {
       name: "user6785",
       content:
-        "I didn't even need training. We've used EEZY for the last five years. I have gotten at least 50 times the value from EEZY. I made back the purchase price in just 48 hours!",
+        "I didn't even need help picking popcorn. Everything you can order is great!",
+      date: "May 20, 2022",
+      response: [
+        {
+          name: "uioj42034",
+          content: "Agreed, try the honey popcorn next time!",
+        },
+        {
+          name: "tjrieow",
+          content: "Agreed, try the honey popcorn next time!",
+        },
+        {
+          name: "LoremIpsum",
+          content: "Agreefjekowpqjfie",
+        },
+      ],
     },
   ];
+
+  if (!reviews.length) {
+    return (
+      <Box>
+        <chakra.p>Be the First to Leave a Review!</chakra.p>
+      </Box>
+    );
+  }
+
+  const reply = (
+    <Box marginTop={7} paddingLeft={4}>
+      <div>
+        <FormControl id="email" mt={1}>
+          <FormLabel fontSize={"13px"} fontWeight="md" color={"gray.700"}>
+            Leave a reply:
+          </FormLabel>
+          <Textarea
+            mt={1}
+            rows={3}
+            shadow="sm"
+            focusBorderColor="brand.400"
+            fontSize={{ sm: "sm" }}
+          />
+        </FormControl>
+      </div>
+
+      <Button
+        margin={2}
+        type="submit"
+        size="sm"
+        bg={"teal.400"}
+        color={"white"}
+        _hover={{
+          bg: "blue.500",
+        }}
+      >
+        Submit
+      </Button>
+    </Box>
+  );
 
   return (
     <div>
@@ -23,35 +93,40 @@ export default function Reviews() {
             maxW={"640px"}
             direction={{ base: "column-reverse", md: "row" }}
             width={"full"}
-            marginBottom="10"
             rounded={"xl"}
             p={10}
             justifyContent={"space-between"}
             position={"relative"}
+            key={review.name}
+            marginBottom={3}
           >
             <Flex
               direction={"column"}
               textAlign={"left"}
               justifyContent={"space-between"}
             >
-              <chakra.p
-                fontFamily={"Inter"}
-                fontWeight={"medium"}
-                fontSize={"15px"}
-                pb={4}
-              >
-                {review.content}
-              </chakra.p>
-              <chakra.p>
-                <chakra.span
+              <div>
+                <chakra.p
                   fontFamily={"Inter"}
                   fontWeight={"medium"}
-                  color={"gray.500"}
+                  fontSize={"17px"}
+                  pb={4}
+                  marginTop={7}
                 >
-                  {" "}
-                  - {review.name}
-                </chakra.span>
-              </chakra.p>
+                  "{review.content}"
+                </chakra.p>
+                <chakra.p textAlign={"right"}>
+                  <chakra.span fontFamily={"Inter"} fontWeight={"medium"}>
+                    <span className="bold">{review.name}</span> wrote this
+                    review on {review.date}
+                  </chakra.span>
+                </chakra.p>
+              </div>
+              <hr></hr>
+
+              {!review.response ? <></> : <Response {...review} />}
+
+              {reply}
             </Flex>
           </Flex>
         ))}
