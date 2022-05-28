@@ -40,3 +40,35 @@ code {
   margin-right: 50px;
   margin-top: 50px;
 }
+
+.bold {
+  font-weight: bold;
+}
+
+.unbold {
+  font-weight: 50;
+}
+
+.link {
+  color: #2b6cb0;
+  font-weight: 50;
+  text-decoration: underline;
+}
+
+.signUpForm {
+  width: 70%;
+  max-width: 500px;
+}
+
+.ReviewCard {
+  background-color: #38b2ac;
+  color: white;
+}
+
+.loginToggle {
+  width: 50%;
+}
+
+.inActive {
+  color: black;
+}
