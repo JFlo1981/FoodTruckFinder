@@ -41,7 +41,12 @@ This app was refactored from an existing, fully functional MERN app setup with a
 
 ## Contact
 
-Please visit Contributors Profiles **[GitHub profile](https://github.com/JFlo1981) (https://github.com/dieterichelizabeth) (https://github.com/dylank641) (https://github.com/Houst29476)** to check out this and other projects we've created and contributed to.
+Please visit Contributors GitHub Profiles:
+ **[Jarod Florene](https://github.com/JFlo1981)** 
+ **[Liz Dieterich](https://github.com/dieterichelizabeth)** 
+ **[James Killelea](https://github.com/dylank641)** 
+ **[Bradley Boyd](https://github.com/Houst29476)** 
+ to check out this and other projects we've created and contributed to.
 
 
 ## Links
