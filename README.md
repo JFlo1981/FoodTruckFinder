@@ -46,7 +46,7 @@ Please visit Contributors GitHub Profiles:
  **[Liz Dieterich](https://github.com/dieterichelizabeth)** 
  **[James Killelea](https://github.com/dylank641)** 
  **[Bradley Boyd](https://github.com/Houst29476)** 
- to check out this and other projects we've created and contributed to.
+ to check out this project and other projects we've created and contributed to.
 
 
 ## Links
