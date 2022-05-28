@@ -25,7 +25,7 @@ export const CREATE_USER = gql`
 `;
 
 export const CREATE_REVIEW = gql`
-  mutation addReview($reviewText: String!) {
+  mutation Mutation($reviewText: String!) {
     addReview(reviewText: $reviewText) {
       _id
       reviewText
@@ -34,6 +34,9 @@ export const CREATE_REVIEW = gql`
       reactionCount
       reactions {
         _id
+        reactionBody
+        createdAt
+        username
       }
     }
   }

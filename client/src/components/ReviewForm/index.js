@@ -17,7 +17,7 @@ import {
 
 function ReviewForm() {
   // Form States
-  const [reviewContent, setCurrentReviewContent] = useState("");
+  const [reviewText, setCurrentReviewContent] = useState("");
   const [characterAmount, setCharacterAmount] = useState(0);
 
   // updates characterAmount/reviewContent state based on User input changes
@@ -29,28 +29,7 @@ function ReviewForm() {
   };
 
   // Use mutation from mutations.js
-  const [addReview, { error }] = useMutation(CREATE_REVIEW, {
-    update(cache, { data: { addReview } }) {
-      // could potentially not exist yet, so wrap in a try/catch
-      try {
-        // update me array's cache
-        const { me } = cache.readQuery({ query: ME_QUERY });
-        cache.writeQuery({
-          query: ME_QUERY,
-          data: { me: { ...me, reviews: [...me.reviews, addReview] } },
-        });
-      } catch (e) {
-        console.warn("First Review by user!");
-      }
-
-      // update thought array's cache
-      const { reviews } = cache.readQuery({ query: QUERY_REVIEWS });
-      cache.writeQuery({
-        query: QUERY_REVIEWS,
-        data: { reviews: [addReview, ...reviews] },
-      });
-    },
-  });
+  const [addReview, { error }] = useMutation(CREATE_REVIEW);
 
   // On submit of Review Form, attempt to save the review to the database
   const formSubmitHandler = async (event) => {
@@ -58,8 +37,9 @@ function ReviewForm() {
 
     // use try/catch to use database mutation CREATE_REVIEW
     try {
+      console.log(typeof reviewText);
       await addReview({
-        variables: { reviewContent },
+        variables: { reviewText },
       });
 
       console.log("Made it");
@@ -90,7 +70,7 @@ function ReviewForm() {
                   shadow="sm"
                   focusBorderColor="brand.400"
                   fontSize={{ sm: "sm" }}
-                  value={reviewContent}
+                  value={reviewText}
                   onChange={handleUserInput}
                 />
               </FormControl>
