@@ -3,8 +3,8 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
-    username: String
-    email: String
+    username: String!
+    email: String!
     friendCount: Int
     reviews: [Review]
     friends: [User]
@@ -17,6 +17,9 @@ const typeDefs = gql`
     image: String
     link: String
     truckName: String!
+    location: String
+    hours: String!
+    menu: String
   }
 
   type Review {
@@ -56,12 +59,10 @@ const typeDefs = gql`
     addFriend(friendId: ID!): User
     addTruck(owners: [String], description: String, truckId: String, image: String, link: String, truckName: String): Auth
     removeTruck (truckId: String!): Auth
+    editTruck (truckId: String!): Auth
   }
   
 `;
-// type Mutation
-// editLocation
-// editHours
-// editMenu
+
 
 module.exports = typeDefs;
