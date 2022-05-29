@@ -57,7 +57,7 @@ const typeDefs = gql`
     addReview(reviewText: String!): Review
     addReaction(reviewId: ID!, reactionBody: String!): Review
     addFriend(friendId: ID!): User
-    addTruck(owners: [String], description: String, truckId: String, image: String, link: String, truckName: String): Auth
+    addTruck(owners: [String], description: String, truckId: String, image: String, link: String, truckName: String, location: String!, hours: String!, menu: String): Auth
     removeTruck (truckId: String!): Auth
     editTruck (truckId: String!): Auth
   }
