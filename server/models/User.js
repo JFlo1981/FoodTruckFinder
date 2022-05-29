@@ -21,6 +21,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    isOwner: {
+      type: Boolean,
+      required: true
+    },
     savedTrucks: [truckSchema],
   },
   {

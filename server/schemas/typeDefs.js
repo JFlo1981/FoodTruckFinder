@@ -8,6 +8,7 @@ const typeDefs = gql`
     friendCount: Int
     reviews: [Review]
     friends: [User]
+    isOwner: Boolean!
   }
   type Truck {
     owners: [String]
