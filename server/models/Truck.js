@@ -1,4 +1,4 @@
-const { Schema } = require('mongoose');
+const { Schema } = require("mongoose");
 
 const truckSchema = new Schema({
   owner: [
@@ -26,16 +26,16 @@ const truckSchema = new Schema({
     required: true,
   },
   location: {
-    type: String, 
-    required: true
-  }, 
+    type: String,
+    required: true,
+  },
   hours: {
     type: String,
     required: true,
-  }, 
+  },
   menu: {
     type: String,
-  }
+  },
 });
 
 module.exports = truckSchema;
