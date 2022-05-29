@@ -58,21 +58,14 @@ const typeDefs = gql`
     addReview(reviewText: String!): Review
     addReaction(reviewId: ID!, reactionBody: String!): Review
     addFriend(friendId: ID!): User
-<<<<<<< HEAD
-    addTruck(owners: [String], description: String, truckId: String, image: String, link: String, truckName: String): Auth
-    removeTruck (truckId: String!): Auth
-    editTruck (truckId: String!): Auth
-=======
     addTruck(
-      owners: [String]
-      description: String
-      truckId: String
-      image: String
-      link: String
-      truckName: String
-    ): Auth
+      owners: [String], 
+      description: String,
+      truckId: String,
+      image: String,
+      link: String,
+      truckName: String): Auth
     removeTruck(truckId: String!): Auth
->>>>>>> 9069239fbc9b6533b7e971cc5a19dcacdade382e
   }
 `;
 
