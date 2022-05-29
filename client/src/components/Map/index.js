@@ -41,12 +41,17 @@ export default function App() {
         center={center}
         options={options}
       >
-        {/* {austinData.map((truck) =>(
-       <Marker key={truck.id} position={{lat: 30.2672, lng:-97.7431 ,}} icon={{url: "/Marker.svg",}}/>
-     
-     ))}  */}
+        {austinData.map((truck) => (
+          <Marker
+            key={truck.id}
+            position={{
+              lat: truck.coordinates.latitude,
+              lng: truck.coordinates.longitude,
+            }}
+          />
+        ))}
 
-        <Marker position={{ lat: 30.2672, lng: -97.7431 }}></Marker>
+        {/* <Marker position={{ lat: 30.2672, lng: -97.7431 }}></Marker> */}
 
         {console.log(austinData[0].coordinates.latitude)}
       </GoogleMap>
