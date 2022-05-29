@@ -1,61 +1,49 @@
-// AIzaSyBVgM3gh76mFt2sae6fupvXo8rzI8_pEos
-import { useState, useMemo, useCallback, useRef } from "react";
-import {
-  GoogleMap,
-  Marker,
-  DirectionsRenderer,
-  Circle,
-  MarkerClusterer,
-} from "@react-google-maps/api";
-import Places from "./places";
-import Distance from "./distance";
+import React from "react";
+import { GoogleMap, useLoadScript, Marker, InfoWindow, } from "@react-google-maps/api"
+import mapStyles from "../MapStyle"
+import austinData from "../data"
+import pic from "../marker.png"
 
-//google.maps.LatLngLiteral;
-//google.maps.DirectionsResult;
-//google.maps.MapOptions;
+const libraries = ["places"];
+const mapContainerStyle = {
+  width: "100vw",
+  height: "70vh",
+};
+const center ={
+  lat: 30.2672,
+  lng: -97.7431,
+};
 
-export default function Map() {
-  return <div>Map</div>;
+const options = {
+  styles: mapStyles,
+  disableDefaultUI: true,
+};
+
+
+export default function App () {
+  const {isLoaded, loadError}= useLoadScript({
+    googleMapsApiKey: "",
+    libraries,
+  });
+
+
+  if (loadError) return "Error loading maps";
+  if (!isLoaded) return "Loading Maps";
+
+
+  return <div>
+    
+    <GoogleMap mapContainerStyle={mapContainerStyle} zoom={14} center={center} options={options} >
+     {/* {austinData.map((truck) =>(
+       <Marker key={truck.id} position={{lat: 30.2672, lng:-97.7431 ,}} icon={{url: "/Marker.svg",}}/>
+     
+     ))}  */}
+
+     <Marker
+     position={{lat:30.2672, lng: -97.7431 }} icon={"/Marker.svg"}></Marker>
+     
+     
+     {console.log(austinData[0].coordinates.latitude)}
+    </GoogleMap>
+  </div>;
 }
-
-const defaultOptions = {
-  strokeOpacity: 0.5,
-  strokeWeight: 2,
-  clickable: false,
-  draggable: false,
-  editable: false,
-  visible: true,
-};
-const closeOptions = {
-  ...defaultOptions,
-  zIndex: 3,
-  fillOpacity: 0.05,
-  strokeColor: "#8BC34A",
-  fillColor: "#8BC34A",
-};
-const middleOptions = {
-  ...defaultOptions,
-  zIndex: 2,
-  fillOpacity: 0.05,
-  strokeColor: "#FBC02D",
-  fillColor: "#FBC02D",
-};
-const farOptions = {
-  ...defaultOptions,
-  zIndex: 1,
-  fillOpacity: 0.05,
-  strokeColor: "#FF5252",
-  fillColor: "#FF5252",
-};
-
-const generateHouses = (position: google.maps.LatLngLiteral) => {
-  const _houses: Array<LatLngLiteral> = [];
-  for (let i = 0; i < 100; i++) {
-    const direction = Math.random() < 0.5 ? -2 : 2;
-    _houses.push({
-      lat: position.lat + Math.random() / direction,
-      lng: position.lng + Math.random() / direction,
-    });
-  }
-  return _houses;
-};
