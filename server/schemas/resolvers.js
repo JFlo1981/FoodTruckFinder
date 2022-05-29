@@ -26,7 +26,8 @@ const resolvers = {
       return User.findOne({ username })
         .select("-__v -password")
         .populate("friends")
-        .populate("reviews");
+        .populate("reviews")
+        .populate("savedTrucks");
     },
     reviews: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -74,13 +75,13 @@ const resolvers = {
           username: context.user.username,
         });
 
-        await User.findByIdAndUpdate(
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { reviews: review._id } },
           { new: true }
         );
 
-        return review;
+        return updatedUser;
       }
 
       throw new AuthenticationError("You need to be logged in!");
