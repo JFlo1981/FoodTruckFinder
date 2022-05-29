@@ -22,7 +22,7 @@ const options = {
 
 export default function App () {
   const {isLoaded, loadError}= useLoadScript({
-    googleMapsApiKey: "",
+    googleMapsApiKey: "AIzaSyBVgM3gh76mFt2sae6fupvXo8rzI8_pEos",
     libraries,
   });
 
