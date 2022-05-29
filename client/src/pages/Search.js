@@ -1,12 +1,12 @@
 import React from "react";
 import { Heading, Image, Stack, useColorModeValue } from "@chakra-ui/react";
 import ResultCards from "../components/ResultsCards";
-import App from "../components/Map"
+import App from "../components/Map";
 
 function Search() {
   return (
     <div>
-     <App  />
+      {/* <App  /> */}
       <div className="searchResults">
         <Stack
           // bg={useColorModeValue("white", "gray.800")}
@@ -25,4 +25,3 @@ function Search() {
 }
 
 export default Search;
-
