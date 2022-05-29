@@ -32,7 +32,7 @@ function Dashboard() {
   return (
     <div className="userDashboard">
       <Heading textAlign={"center"} paddingTop={"10"} paddingBottom={"15"}>
-        Now Viewing {user.username}'s Profile
+        Now Viewing {userParam ? `${user.username}'s` : "Your"} Reviews
       </Heading>
 
       <Flex
@@ -45,9 +45,7 @@ function Dashboard() {
         position={"relative"}
       >
         <div>
-          <Text fontSize="18px" mt={3} mb={2} ml={4}>
-            {userParam ? `${user.username}'s` : `Your`} Reviews:
-          </Text>
+          {/* Add # of contributions? */}
           <Reviews />
         </div>
       </Flex>

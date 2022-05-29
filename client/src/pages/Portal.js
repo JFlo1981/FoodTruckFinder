@@ -93,9 +93,9 @@ const Portal = () => {
           {/* Login Link for Owners */}
           <Stack pt={6}>
             <Text align={"center"}>
-              Own a Truck? Head to the{" "}
+              Own a Truck?{" "}
               <Link color={"blue.400"} href="/portal/owner">
-                Business Portal
+                Register Here!
               </Link>
             </Text>
           </Stack>
