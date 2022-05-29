@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Review } = require("../models");
+const { User, Review, Truck } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -34,6 +34,13 @@ const resolvers = {
     },
     review: async (parent, { _id }) => {
       return Review.findOne({ _id });
+    },
+    trucks: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Truck.find(params).sort({ createdAt: -1 });
+    },
+    truck: async (parent, { _id }) => {
+      return Truck.findOne({ _id });
     },
   },
 
@@ -108,56 +115,34 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    addTruck: async (
-      parent,
-      {
-        owners,
-        description,
-        truckId,
-        image,
-        link,
-        truckName,
-        location,
-        hours,
-        menu,
-      },
-      context
-    ) => {
+    addTruck: async (parent, args, context) => {
       if (context.user) {
-        const newUser = await User.findByIdAndUpdate(
+        const truck = await Truck.create({
+          ...args,
+        });
+
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          {
-            $push: {
-              savedTrucks: {
-                owners,
-                description,
-                truckId,
-                image,
-                link,
-                truckName,
-                location,
-                hours,
-                menu,
-              },
-            },
-          },
+          { $push: { savedTrucks: truck._id } },
           { new: true }
         );
 
-        return newUser;
+        return updatedUser;
       }
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    removeTruck: async (parent, { truckId }, context) => {
+    removeTruck: async (parent, args, context) => {
       if (context.user) {
-        const newUser = await User.findByIdAndUpdate(
+        const removedTruck = await Truck.deleteOne({ _id: { ...args } });
+
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedTrucks: { truckId } } },
+          { $pull: { savedTrucks: removedTruck._id } },
           { new: true }
         );
 
-        return newUser;
+        return updatedUser;
       }
       throw new AuthenticationError("You need to be logged in!");
     },

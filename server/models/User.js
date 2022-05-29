@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 
 // import schema from Truck.js
 const truckSchema = require("./Truck");
+const Review = require("./Review");
 
 const userSchema = new Schema(
   {
@@ -23,9 +24,10 @@ const userSchema = new Schema(
     },
     isOwner: {
       type: Boolean,
-      required: true
+      required: true,
     },
-    savedTrucks: [truckSchema],
+    savedTrucks: [{ type: Schema.Types.ObjectId, ref: "Truck" }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
   },
   {
     toJSON: {

@@ -1,4 +1,4 @@
-const { Schema } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const truckSchema = new Schema({
   owner: [
@@ -8,10 +8,6 @@ const truckSchema = new Schema({
     // associate by unique identifier (username or email)
   ],
   description: {
-    type: String,
-    required: true,
-  },
-  truckId: {
     type: String,
     required: true,
   },
@@ -38,4 +34,6 @@ const truckSchema = new Schema({
   },
 });
 
-module.exports = truckSchema;
+const Truck = model("Truck", truckSchema);
+
+module.exports = Truck;

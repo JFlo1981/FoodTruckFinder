@@ -6,14 +6,15 @@ const typeDefs = gql`
     username: String!
     email: String!
     friendCount: Int
+    savedTrucks: [Truck]
     reviews: [Review]
     friends: [User]
     isOwner: Boolean!
   }
   type Truck {
+    _id: ID
     owners: [String]
     description: String
-    truckId: String!
     image: String
     link: String
     truckName: String!
@@ -39,12 +40,25 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
+  input inputTruck {
+    _id: ID
+    owners: [String]
+    description: String
+    image: String
+    link: String
+    truckName: String!
+    location: String
+    hours: String!
+    menu: String
+  }
   type Query {
     me: User
     users: [User]
     user(username: String!): User
     reviews(username: String): [Review]
     review(_id: ID!): Review
+    trucks(username: String): [Truck]
+    truck(_id: ID!): Truck
   }
   type Mutation {
     login(email: String!, password: String!): Auth
@@ -55,15 +69,13 @@ const typeDefs = gql`
     addTruck(
       owners: [String]
       description: String
-      truckId: String
       image: String
       link: String
       truckName: String
-      location: String!
-      hours: String!
-      menu: String
-    ): Auth
-    removeTruck(truckId: String!): Auth
+      hours: String
+      location: String
+    ): User
+    removeTruck(_id: ID!): Auth
     editTruck(truckId: String!): Auth
   }
 `;
