@@ -9,24 +9,82 @@ import {
   Menu,
   Image,
   useDisclosure,
+  useColorMode,
   useColorModeValue,
   Stack,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
+import Auth from "../../utils/auth";
 
 const Header = () => {
-  const Links = [
-    { name: "Account Information", href: "/account" },
-    { name: "Dashboard", href: "/dashboard" },
-    { name: "Search for Trucks", href: "/search" },
-  ];
-
+  // Mobile Nav definitions through Chakra UI Hook
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  // Light/Darkmode Chakra UI Hook
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  // User Dashboard Link
+  const userLinks = (
+    <div>
+      <Link
+        px={2}
+        py={1}
+        rounded={"md"}
+        _hover={{
+          textDecoration: "none",
+          bg: ("gray.200", "gray.300"),
+        }}
+        href={"/reviews"}
+      >
+        {"Your Reviews"}
+      </Link>
+    </div>
+  );
+
+  // Owner Account Links
+  const ownerLinks = (
+    <Link
+      px={2}
+      py={1}
+      rounded={"md"}
+      _hover={{
+        textDecoration: "none",
+        bg: ("gray.200", "gray.300"),
+      }}
+      href={"/account"}
+    >
+      {"Account"}
+    </Link>
+  );
+
+  // Owner control over open/closed
+  const isOpenButton = (
+    <Button
+      fontSize={"sm"}
+      fontWeight={600}
+      color={"white"}
+      bg={"green.400"}
+      marginRight={2}
+      _hover={{
+        bg: "green.300",
+      }}
+    >
+      Open
+    </Button>
+  );
+
+  // On submit of Logout Buttom, attempt sign User out
+  // Will reload to the homepage
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+  };
 
   return (
     <div>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+          {/* Mobile Nav Toggle Button */}
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -35,6 +93,7 @@ const Header = () => {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
+            {/* Logo */}
             <Box>
               <Link
                 px={2}
@@ -53,28 +112,44 @@ const Header = () => {
                 />
               </Link>
             </Box>
+            {/* Nav Links */}
             <HStack
               as={"nav"}
               spacing={4}
               display={{ base: "none", md: "flex" }}
             >
-              {Links.map((link) => (
-                <Link
-                  px={2}
-                  py={1}
-                  rounded={"md"}
-                  _hover={{
-                    textDecoration: "none",
-                    bg: ("gray.200", "gray.300"),
-                  }}
-                  href={link.href}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              <Link
+                px={2}
+                py={1}
+                rounded={"md"}
+                _hover={{
+                  textDecoration: "none",
+                  bg: ("gray.200", "gray.300"),
+                }}
+                href={"/search"}
+              >
+                {"Search for Trucks"}
+              </Link>
+              {Auth.loggedIn() ? (
+                <>
+                  {userLinks}
+                  {ownerLinks}
+                </>
+              ) : (
+                <></>
+              )}
             </HStack>
           </HStack>
+
           <Flex alignItems={"center"}>
+            {Auth.loggedIn() ? <>{isOpenButton}</> : <></>}
+
+            {/* Light/Dark Mode Button */}
+            <Button onClick={toggleColorMode}>
+              {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
+            </Button>
+
+            {/* Login/Auth Portal Button */}
             <Menu>
               <Button
                 fontSize={"sm"}
@@ -85,35 +160,39 @@ const Header = () => {
                   bg: "pink.300",
                 }}
               >
-                <Link href={"/signup"}>Sign Up</Link>
+                {Auth.loggedIn() ? (
+                  <a href="/" onClick={logout}>
+                    Logout
+                  </a>
+                ) : (
+                  <a href="/portal">Sign In</a>
+                )}
               </Button>
             </Menu>
           </Flex>
         </Flex>
 
+        {/* Mobile Hidden Nav */}
         {isOpen ? (
           <Box pb={4} display={{ md: "none" }}>
             <Stack as={"nav"} spacing={4}>
-              {Links.map((link) => (
-                <Link
-                  px={2}
-                  py={1}
-                  rounded={"md"}
-                  _hover={{
-                    textDecoration: "none",
-                    bg: ("gray.200", "gray.300"),
-                  }}
-                  href={link.href}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              <Link
+                px={2}
+                py={1}
+                rounded={"md"}
+                _hover={{
+                  textDecoration: "none",
+                  bg: ("gray.200", "gray.300"),
+                }}
+                href={"/search"}
+              >
+                {"Search for Trucks"}
+              </Link>
+              {Auth.loggedIn() ? <>{userLinks}</> : null}
             </Stack>
           </Box>
         ) : null}
       </Box>
-
-      {/* <Box p={4}>Collapsable search bar?</Box> */}
     </div>
   );
 };
