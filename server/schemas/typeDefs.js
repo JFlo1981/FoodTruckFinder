@@ -9,7 +9,6 @@ const typeDefs = gql`
     reviews: [Review]
     friends: [User]
   }
-
   type Truck {
     owners: [String]
     description: String
@@ -21,7 +20,6 @@ const typeDefs = gql`
     hours: String!
     menu: String
   }
-
   type Review {
     _id: ID
     reviewText: String
@@ -30,19 +28,16 @@ const typeDefs = gql`
     reactionCount: Int
     reactions: [Reaction]
   }
-
   type Reaction {
     _id: ID
     reactionBody: String
     createdAt: String
     username: String
   }
-
   type Auth {
     token: ID!
     user: User
   }
-
   type Query {
     me: User
     users: [User]
@@ -50,7 +45,6 @@ const typeDefs = gql`
     reviews(username: String): [Review]
     review(_id: ID!): Review
   }
-
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
@@ -64,6 +58,9 @@ const typeDefs = gql`
       image: String
       link: String
       truckName: String
+      location: String!
+      hours: String!
+      menu: String
     ): Auth
     removeTruck(truckId: String!): Auth
     editTruck(truckId: String!): Auth

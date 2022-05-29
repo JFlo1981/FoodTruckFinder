@@ -6,7 +6,7 @@ import App from "../components/Map";
 function Search() {
   return (
     <div>
-      {/* <App  /> */}
+      {/* <App /> */}
       <div className="searchResults">
         <Stack
           // bg={useColorModeValue("white", "gray.800")}
