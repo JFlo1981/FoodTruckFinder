@@ -125,6 +125,9 @@ function SingleTruck() {
   return (
     <div>
       <Container maxW={"7xl"}>
+        <Link marginTop={2} wordBreak="break-word" href="/search">
+          Back to Map
+        </Link>
         <SimpleGrid
           columns={{ base: 1, lg: 2 }}
           spacing={{ base: 8, md: 10 }}

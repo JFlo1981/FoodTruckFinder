@@ -1,5 +1,5 @@
 import React from "react";
-// import TruckForm from "../components/TruckForm";
+import TruckForm from "../components/TruckForm";
 import { Heading } from "@chakra-ui/react";
 import Profile from "../components/Profile";
 
@@ -10,9 +10,9 @@ const Account = () => {
         "your" Account Information.
       </Heading>
 
-      <Profile />
+      {/* <Profile /> */}
 
-      {/* <TruckForm /> */}
+      <TruckForm />
     </div>
   );
 };
