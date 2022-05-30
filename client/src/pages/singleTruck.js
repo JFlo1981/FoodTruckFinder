@@ -1,4 +1,8 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_TRUCK } from "../utils/queries";
+import Reviews from "../components/Reviews";
 import {
   Box,
   Container,
@@ -10,34 +14,33 @@ import {
   Heading,
   SimpleGrid,
   StackDivider,
-  useColorModeValue,
+  // useColorModeValue,
   List,
   Link,
   ListItem,
 } from "@chakra-ui/react";
-import Reviews from "../components/Reviews";
 
 function SingleTruck() {
-  const truck = {
-    name: "Popcornopolis",
-    hours: "9:00am - 11:00pm",
-    reviewCount: "3",
-    image:
-      "https://images.unsplash.com/photo-1565097158282-1094bd0fe46a?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870",
-    description:
-      "This is a popcorn foodtruck which sells any kind of popcorn you can think of.",
-    website: "https://popcornopolis.com",
-    email: "popolopis@gmail.com",
-    owner: "John Doe, Polly Popcorn",
-    menu: "https://images.unsplash.com/photo-1599250300435-b9693f21830d?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170",
-  };
+  const { id: truckId } = useParams();
+
+  const { loading, data } = useQuery(QUERY_TRUCK, {
+    variables: { id: truckId },
+  });
+
+  const truck = data?.truck || {};
+
+  if (loading) {
+    return <div>Now Loading...</div>;
+  }
+
+  const reviewLength = truck.reviews.length;
 
   // Display Business Information: Email, Website
   const businessDisplay = (
     <Box>
       <Text
         fontSize={{ base: "16px", lg: "18px" }}
-        color={useColorModeValue("yellow.500", "yellow.300")}
+        // color={useColorModeValue("yellow.500", "yellow.300")}
         fontWeight={"500"}
         textTransform={"uppercase"}
         mb={"4"}
@@ -50,8 +53,8 @@ function SingleTruck() {
           <ListItem className="bold">
             Website:{" "}
             <span className="link">
-              <a href={truck.website} rel="noopener noreferrer" target="_blank">
-                {truck.website}
+              <a href={truck.link} rel="noopener noreferrer" target="_blank">
+                {truck.link}
               </a>
             </span>
           </ListItem>
@@ -97,7 +100,7 @@ function SingleTruck() {
     <Box>
       <Text
         fontSize={{ base: "16px", lg: "18px" }}
-        color={useColorModeValue("yellow.500", "yellow.300")}
+        // color={useColorModeValue("yellow.500", "yellow.300")}
         fontWeight={"500"}
         textTransform={"uppercase"}
         mb={"4"}
@@ -106,14 +109,14 @@ function SingleTruck() {
       </Text>
 
       <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
-        <Reviews />
+        <Reviews reviews={truck.reviews} />
         <Link
           mx={2}
           cursor="pointer"
           textDecor="underline"
-          color={useColorModeValue("blue.600", "blue.400")}
+          // color={useColorModeValue("blue.600", "blue.400")}
           wordBreak="break-word"
-          href="/truck/reviews"
+          href={`/truck/reviews/${truck._id}`}
           marginBottom={10}
         >
           Leave a Review
@@ -153,10 +156,10 @@ function SingleTruck() {
                 fontWeight={600}
                 fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
               >
-                {truck.name}
+                {truck.truckName}
               </Heading>
               <Text
-                color={useColorModeValue("gray.900", "gray.400")}
+                // color={useColorModeValue("gray.900", "gray.400")}
                 fontWeight={300}
                 fontSize={"2xl"}
               >
@@ -165,17 +168,17 @@ function SingleTruck() {
               <Flex
                 alignItems="center"
                 mt={2}
-                color={useColorModeValue("gray.700", "gray.200")}
+                // color={useColorModeValue("gray.700", "gray.200")}
               >
-                <span>{truck.reviewCount} Reviews</span>
+                <span>{reviewLength} Reviews</span>
 
                 <Link
                   mx={2}
                   cursor="pointer"
                   textDecor="underline"
-                  color={useColorModeValue("blue.600", "blue.400")}
+                  // color={useColorModeValue("blue.600", "blue.400")}
                   wordBreak="break-word"
-                  href="/truck/reviews"
+                  href={`/truck/reviews/${truck._id}`}
                 >
                   See All Reviews
                 </Link>
@@ -187,13 +190,13 @@ function SingleTruck() {
               direction={"column"}
               divider={
                 <StackDivider
-                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                // borderColor={useColorModeValue("gray.200", "gray.600")}
                 />
               }
             >
               <VStack spacing={{ base: 4, sm: 6 }}>
                 <Text
-                  color={useColorModeValue("gray.500", "gray.400")}
+                  // color={useColorModeValue("gray.500", "gray.400")}
                   fontSize={"2xl"}
                   fontWeight={"300"}
                 >

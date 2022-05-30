@@ -1,48 +1,17 @@
+import React from "react";
 import {
   chakra,
   Flex,
   Box,
-  FormControl,
-  FormLabel,
-  Textarea,
-  Button,
+  // FormControl,
+  // FormLabel,
+  // Textarea,
+  // Button,
 } from "@chakra-ui/react";
-import Response from "../Response";
+// import Response from "../Response";
 
-export default function Reviews() {
-  const reviews = [
-    {
-      name: "user1",
-      content: "Loved the Carmel popcorn bag, will definately be coming back!",
-      date: "May 19, 2022",
-      response: [
-        {
-          name: "user 42034",
-          content: "Agreed, try the honey popcorn next time!",
-        },
-      ],
-    },
-    {
-      name: "user6785",
-      content:
-        "I didn't even need help picking popcorn. Everything you can order is great!",
-      date: "May 20, 2022",
-      response: [
-        {
-          name: "uioj42034",
-          content: "Agreed, try the honey popcorn next time!",
-        },
-        {
-          name: "tjrieow",
-          content: "Agreed, try the honey popcorn next time!",
-        },
-        {
-          name: "LoremIpsum",
-          content: "Agreefjekowpqjfie",
-        },
-      ],
-    },
-  ];
+const Reviews = ({ reviews }) => {
+  // console.log(reviews);
 
   if (!reviews.length) {
     return (
@@ -52,37 +21,37 @@ export default function Reviews() {
     );
   }
 
-  const reply = (
-    <Box marginTop={7} paddingLeft={4}>
-      <div>
-        <FormControl id="email" mt={1}>
-          <FormLabel fontSize={"13px"} fontWeight="md" color={"gray.700"}>
-            Leave a reply:
-          </FormLabel>
-          <Textarea
-            mt={1}
-            rows={3}
-            shadow="sm"
-            focusBorderColor="brand.400"
-            fontSize={{ sm: "sm" }}
-          />
-        </FormControl>
-      </div>
+  // const reply = (
+  //   <Box marginTop={7} paddingLeft={4}>
+  //     <div>
+  //       <FormControl id="email" mt={1}>
+  //         <FormLabel fontSize={"13px"} fontWeight="md" color={"gray.700"}>
+  //           Leave a reply:
+  //         </FormLabel>
+  //         <Textarea
+  //           mt={1}
+  //           rows={3}
+  //           shadow="sm"
+  //           focusBorderColor="brand.400"
+  //           fontSize={{ sm: "sm" }}
+  //         />
+  //       </FormControl>
+  //     </div>
 
-      <Button
-        margin={2}
-        type="submit"
-        size="sm"
-        bg={"teal.400"}
-        color={"white"}
-        _hover={{
-          bg: "blue.500",
-        }}
-      >
-        Submit
-      </Button>
-    </Box>
-  );
+  //     <Button
+  //       margin={2}
+  //       type="submit"
+  //       size="sm"
+  //       bg={"teal.400"}
+  //       color={"white"}
+  //       _hover={{
+  //         bg: "blue.500",
+  //       }}
+  //     >
+  //       Submit
+  //     </Button>
+  //   </Box>
+  // );
 
   return (
     <div>
@@ -113,23 +82,25 @@ export default function Reviews() {
                   pb={4}
                   marginTop={7}
                 >
-                  "{review.content}"
+                  "{review.reviewText}"
                 </chakra.p>
                 <chakra.p textAlign={"right"}>
                   <chakra.span fontFamily={"Inter"} fontWeight={"medium"}>
-                    <span className="bold">{review.name}</span> wrote this
-                    review on {review.date}
+                    <span className="bold">{review.username}</span> wrote this
+                    review on {review.createdAt}
                   </chakra.span>
                 </chakra.p>
               </div>
               <hr></hr>
 
-              {!review.response ? <></> : <Response {...review} />}
+              {/* {!review.response ? <></> : <Response {...review} />} */}
 
-              {reply}
+              {/* {reply} */}
             </Flex>
           </Flex>
         ))}
     </div>
   );
-}
+};
+
+export default Reviews;
