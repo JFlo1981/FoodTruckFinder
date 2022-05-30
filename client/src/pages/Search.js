@@ -1,7 +1,7 @@
 import React from "react";
-import { Heading, Image, Stack, useColorModeValue } from "@chakra-ui/react";
+import { Heading, Stack } from "@chakra-ui/react";
 import ResultCards from "../components/ResultsCards";
-import App from "../components/Map";
+// import App from "../components/Map";
 import { useQuery } from "@apollo/client";
 import { QUERY_TRUCKS } from "../utils/queries";
 
@@ -9,6 +9,9 @@ function Search() {
   const { loading, data } = useQuery(QUERY_TRUCKS);
   const trucks = data?.trucks || [];
 
+  if (loading) {
+    return <div>Now Loading...</div>;
+  }
   return (
     <div>
       {/* <App /> */}

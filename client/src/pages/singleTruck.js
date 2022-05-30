@@ -33,6 +33,8 @@ function SingleTruck() {
     return <div>Now Loading...</div>;
   }
 
+  const reviewLength = truck.reviews.length;
+
   // Display Business Information: Email, Website
   const businessDisplay = (
     <Box>
@@ -107,14 +109,14 @@ function SingleTruck() {
       </Text>
 
       <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
-        <Reviews />
+        <Reviews reviews={truck.reviews} />
         <Link
           mx={2}
           cursor="pointer"
           textDecor="underline"
           // color={useColorModeValue("blue.600", "blue.400")}
           wordBreak="break-word"
-          href="/truck/reviews"
+          href={`/truck/reviews/${truck._id}`}
           marginBottom={10}
         >
           Leave a Review
@@ -168,7 +170,7 @@ function SingleTruck() {
                 mt={2}
                 // color={useColorModeValue("gray.700", "gray.200")}
               >
-                <span>{truck.reviewCount} Reviews</span>
+                <span>{reviewLength} Reviews</span>
 
                 <Link
                   mx={2}
@@ -176,7 +178,7 @@ function SingleTruck() {
                   textDecor="underline"
                   // color={useColorModeValue("blue.600", "blue.400")}
                   wordBreak="break-word"
-                  href="/truck/reviews"
+                  href={`/truck/reviews/${truck._id}`}
                 >
                   See All Reviews
                 </Link>
