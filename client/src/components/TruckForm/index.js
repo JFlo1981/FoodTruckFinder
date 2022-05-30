@@ -19,7 +19,6 @@ import {
   VisuallyHidden,
   useColorModeValue,
   Stack,
-  Select,
 } from "@chakra-ui/react";
 
 const TruckForm = () => {
@@ -160,114 +159,6 @@ const TruckForm = () => {
                     />
                   </FormControl>
 
-                  <SimpleGrid columns={6} spacing={6}>
-                    <FormControl as={GridItem} colSpan={[6, 3]}>
-                      <FormLabel
-                        htmlFor="first_name"
-                        fontSize="sm"
-                        fontWeight="md"
-                        color={useColorModeValue("gray.700", "gray.50")}
-                      >
-                        Opening Hours
-                      </FormLabel>
-                      <Flex alignItems="center" justifyContent="space-around">
-                        <Select
-                          id="country"
-                          name="country"
-                          autoComplete="country"
-                          placeholder="-"
-                          mt={1}
-                          focusBorderColor="brand.400"
-                          shadow="sm"
-                          size="sm"
-                          w="full"
-                          rounded="md"
-                        >
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                          <option>10</option>
-                          <option>11</option>
-                          <option>12</option>
-                        </Select>
-                        <Select
-                          id="country"
-                          name="country"
-                          autoComplete="country"
-                          placeholder="-"
-                          mt={1}
-                          focusBorderColor="brand.400"
-                          shadow="sm"
-                          size="sm"
-                          w="full"
-                          rounded="md"
-                        >
-                          <option>am</option>
-                          <option>pm</option>
-                        </Select>
-                      </Flex>
-                    </FormControl>
-
-                    <FormControl as={GridItem} colSpan={[6, 3]}>
-                      <FormLabel
-                        htmlFor="last_name"
-                        fontSize="sm"
-                        fontWeight="md"
-                        color={useColorModeValue("gray.700", "gray.50")}
-                      >
-                        Closing Hours
-                      </FormLabel>
-                      <Flex alignItems="center" justifyContent="space-around">
-                        <Select
-                          id="country"
-                          name="country"
-                          autoComplete="country"
-                          placeholder="-"
-                          mt={1}
-                          focusBorderColor="brand.400"
-                          shadow="sm"
-                          size="sm"
-                          w="full"
-                          rounded="md"
-                        >
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                          <option>10</option>
-                          <option>11</option>
-                          <option>12</option>
-                        </Select>
-                        <Select
-                          id="country"
-                          name="country"
-                          autoComplete="country"
-                          placeholder="-"
-                          mt={1}
-                          focusBorderColor="brand.400"
-                          shadow="sm"
-                          size="sm"
-                          w="full"
-                          rounded="md"
-                        >
-                          <option>am</option>
-                          <option>pm</option>
-                        </Select>
-                      </Flex>
-                    </FormControl>
-                  </SimpleGrid>
-
                   <div>
                     <FormControl id="email" mt={1}>
                       <FormLabel
@@ -397,3 +288,115 @@ const TruckForm = () => {
 };
 
 export default TruckForm;
+
+/*
+Hours of Operation
+
+ <SimpleGrid columns={6} spacing={6}>
+                    <FormControl as={GridItem} colSpan={[6, 3]}>
+                      <FormLabel
+                        htmlFor="first_name"
+                        fontSize="sm"
+                        fontWeight="md"
+                        color={useColorModeValue("gray.700", "gray.50")}
+                      >
+                        Opening Hours
+                      </FormLabel>
+                      <Flex alignItems="center" justifyContent="space-around">
+                        <Select
+                          id="country"
+                          name="country"
+                          autoComplete="country"
+                          placeholder="-"
+                          mt={1}
+                          focusBorderColor="brand.400"
+                          shadow="sm"
+                          size="sm"
+                          w="full"
+                          rounded="md"
+                        >
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                          <option>11</option>
+                          <option>12</option>
+                        </Select>
+                        <Select
+                          id="country"
+                          name="country"
+                          autoComplete="country"
+                          placeholder="-"
+                          mt={1}
+                          focusBorderColor="brand.400"
+                          shadow="sm"
+                          size="sm"
+                          w="full"
+                          rounded="md"
+                        >
+                          <option>am</option>
+                          <option>pm</option>
+                        </Select>
+                      </Flex>
+                    </FormControl>
+
+                    <FormControl as={GridItem} colSpan={[6, 3]}>
+                      <FormLabel
+                        htmlFor="last_name"
+                        fontSize="sm"
+                        fontWeight="md"
+                        color={useColorModeValue("gray.700", "gray.50")}
+                      >
+                        Closing Hours
+                      </FormLabel>
+                      <Flex alignItems="center" justifyContent="space-around">
+                        <Select
+                          id="country"
+                          name="country"
+                          autoComplete="country"
+                          placeholder="-"
+                          mt={1}
+                          focusBorderColor="brand.400"
+                          shadow="sm"
+                          size="sm"
+                          w="full"
+                          rounded="md"
+                        >
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                          <option>11</option>
+                          <option>12</option>
+                        </Select>
+                        <Select
+                          id="country"
+                          name="country"
+                          autoComplete="country"
+                          placeholder="-"
+                          mt={1}
+                          focusBorderColor="brand.400"
+                          shadow="sm"
+                          size="sm"
+                          w="full"
+                          rounded="md"
+                        >
+                          <option>am</option>
+                          <option>pm</option>
+                        </Select>
+                      </Flex>
+                    </FormControl>
+                  </SimpleGrid>
+*/

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_REVIEW } from "../../utils/mutations";
+import { ME_QUERY, QUERY_REVIEWS } from "../../utils/queries";
 import {
   Box,
   Button,
@@ -15,9 +16,11 @@ import {
 } from "@chakra-ui/react";
 
 function ReviewForm() {
-  const [reviewContent, setCurrentReviewContent] = useState("");
+  // Form States
+  const [reviewText, setCurrentReviewContent] = useState("");
   const [characterAmount, setCharacterAmount] = useState(0);
 
+  // updates characterAmount/reviewContent state based on User input changes
   const handleUserInput = (event) => {
     if (event.target.value.length <= 1600) {
       setCurrentReviewContent(event.target.value);
@@ -25,17 +28,21 @@ function ReviewForm() {
     }
   };
 
+  // Use mutation from mutations.js
   const [addReview, { error }] = useMutation(CREATE_REVIEW);
 
-  //
+  // On submit of Review Form, attempt to save the review to the database
   const formSubmitHandler = async (event) => {
     event.preventDefault();
 
+    // use try/catch to use database mutation CREATE_REVIEW
     try {
+      console.log(typeof reviewText);
       await addReview({
-        variables: { reviewContent },
+        variables: { reviewText },
       });
 
+      console.log("Made it");
       // Clear the textarea and reset Character Limit
       setCurrentReviewContent("");
       setCharacterAmount(0);
@@ -63,7 +70,7 @@ function ReviewForm() {
                   shadow="sm"
                   focusBorderColor="brand.400"
                   fontSize={{ sm: "sm" }}
-                  value={reviewContent}
+                  value={reviewText}
                   onChange={handleUserInput}
                 />
               </FormControl>

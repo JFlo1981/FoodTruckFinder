@@ -54,9 +54,9 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/portal" element={<Portal />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/dashboard/:username" element={<Dashboard />} />
-              <Route path="/account/:id" element={<Account />} />
+              <Route path="/reviews" element={<Dashboard />} />
+              <Route path="/reviews/:username" element={<Dashboard />} />
+              <Route path="/account" element={<Account />} />
               <Route path="/truck" element={<SingleTruck />} />
               <Route path="/truck/reviews" element={<TruckReviews />} />
               <Route path="/about" element={<About />} />

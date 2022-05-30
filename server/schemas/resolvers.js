@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Review } = require("../models");
+const { User, Review, Truck } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -26,7 +26,8 @@ const resolvers = {
       return User.findOne({ username })
         .select("-__v -password")
         .populate("friends")
-        .populate("reviews");
+        .populate("reviews")
+        .populate("savedTrucks");
     },
     reviews: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -34,6 +35,13 @@ const resolvers = {
     },
     review: async (parent, { _id }) => {
       return Review.findOne({ _id });
+    },
+    trucks: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Truck.find(params).sort({ createdAt: -1 }).populate("reviews");
+    },
+    truck: async (parent, { _id }) => {
+      return Truck.findOne({ _id }).populate("reviews");
     },
   },
 
@@ -60,20 +68,26 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addReview: async (parent, args, context) => {
+    addReview: async (parent, { reviewText, truckId }, context) => {
       if (context.user) {
         const review = await Review.create({
-          ...args,
+          reviewText,
           username: context.user.username,
         });
 
-        await User.findByIdAndUpdate(
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
           { $push: { reviews: review._id } },
           { new: true }
         );
 
-        return review;
+        const updatedTruck = await Truck.findByIdAndUpdate(
+          { _id: truckId },
+          { $push: { reviews: review._id } },
+          { new: true }
+        );
+
+        return updatedTruck;
       }
 
       throw new AuthenticationError("You need to be logged in!");
@@ -108,56 +122,34 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    addTruck: async (
-      parent,
-      {
-        owners,
-        description,
-        truckId,
-        image,
-        link,
-        truckName,
-        location,
-        hours,
-        menu,
-      },
-      context
-    ) => {
+    addTruck: async (parent, args, context) => {
       if (context.user) {
-        const newUser = await User.findByIdAndUpdate(
+        const truck = await Truck.create({
+          ...args,
+        });
+
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          {
-            $push: {
-              savedTrucks: {
-                owners,
-                description,
-                truckId,
-                image,
-                link,
-                truckName,
-                location,
-                hours,
-                menu,
-              },
-            },
-          },
+          { $push: { savedTrucks: truck._id } },
           { new: true }
         );
 
-        return newUser;
+        return updatedUser;
       }
 
       throw new AuthenticationError("You need to be logged in!");
     },
-    removeTruck: async (parent, { truckId }, context) => {
+    removeTruck: async (parent, args, context) => {
       if (context.user) {
-        const newUser = await User.findByIdAndUpdate(
+        const removedTruck = await Truck.deleteOne({ _id: { ...args } });
+
+        const updatedUser = await User.findByIdAndUpdate(
           { _id: context.user._id },
-          { $pull: { savedTrucks: { truckId } } },
+          { $pull: { savedTrucks: removedTruck._id } },
           { new: true }
         );
 
-        return newUser;
+        return updatedUser;
       }
       throw new AuthenticationError("You need to be logged in!");
     },
