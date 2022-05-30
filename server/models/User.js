@@ -28,12 +28,12 @@ const userSchema = new Schema(
     },
     savedTrucks: [{ type: Schema.Types.ObjectId, ref: "Truck" }],
     reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
-  },
-  {
-    toJSON: {
-      virtuals: true,
-    },
   }
+  // {
+  //   toJSON: {
+  //     virtuals: true,
+  //   },
+  // }
 );
 
 userSchema.pre("save", async function (next) {

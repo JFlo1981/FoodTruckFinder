@@ -68,20 +68,28 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addReview: async (parent, args, context) => {
+    addReview: async (parent, { reviewText, truckId }, context) => {
+      console.log(truckId);
+
       if (context.user) {
         const review = await Review.create({
-          ...args,
+          reviewText,
           username: context.user.username,
         });
 
-        const updatedUser = await User.findByIdAndUpdate(
-          { _id: context.user._id },
-          { $push: { reviews: review._id } },
+        // const updatedUser = await User.findByIdAndUpdate(
+        //   { _id: context.user._id },
+        //   { $push: { reviews: review } },
+        //   { new: true }
+        // );
+
+        const updatedTruck = await Truck.findByIdAndUpdate(
+          { _id: truckId },
+          { $push: { reviews: review } },
           { new: true }
         );
 
-        return updatedUser;
+        return updatedTruck;
       }
 
       throw new AuthenticationError("You need to be logged in!");

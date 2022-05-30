@@ -17,10 +17,11 @@ const typeDefs = gql`
     description: String
     image: String
     link: String
-    truckName: String!
+    truckName: String
     location: String
     hours: String!
     menu: String
+    reviews: [Review]
   }
   type Review {
     _id: ID
@@ -63,7 +64,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!): Auth
-    addReview(reviewText: String!): User
+    addReview(reviewText: String!, truckId: ID!): Truck
     addReaction(reviewId: ID!, reactionBody: String!): Review
     addFriend(friendId: ID!): User
     addTruck(
