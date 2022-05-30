@@ -24,16 +24,17 @@ const userSchema = new Schema(
     },
     isOwner: {
       type: Boolean,
+      default: false,
       required: true,
     },
     savedTrucks: [{ type: Schema.Types.ObjectId, ref: "Truck" }],
     reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
+  },
+  {
+    toJSON: {
+      virtuals: true,
+    },
   }
-  // {
-  //   toJSON: {
-  //     virtuals: true,
-  //   },
-  // }
 );
 
 userSchema.pre("save", async function (next) {

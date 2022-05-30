@@ -3,12 +3,9 @@ const Review = require("./Review");
 
 const truckSchema = new Schema(
   {
-    owner: [
-      {
-        type: String,
-      },
-      // associate by unique identifier (username or email)
-    ],
+    owner: {
+      type: String,
+    },
     description: {
       type: String,
       required: true,
