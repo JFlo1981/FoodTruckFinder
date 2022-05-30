@@ -29,6 +29,8 @@ function Dashboard() {
     );
   }
 
+  // const contributions = user.reviews.length;
+
   return (
     <div className="userDashboard">
       <Heading textAlign={"center"} paddingTop={"10"} paddingBottom={"15"}>
@@ -45,8 +47,8 @@ function Dashboard() {
         position={"relative"}
       >
         <div>
-          {/* Add # of contributions? */}
-          <Reviews />
+          {/* <Text>{contributions} contributions</Text> */}
+          <Reviews reviews={user.reviews} />
         </div>
       </Flex>
     </div>

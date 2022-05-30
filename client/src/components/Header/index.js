@@ -34,7 +34,7 @@ const Header = () => {
           textDecoration: "none",
           bg: ("gray.200", "gray.300"),
         }}
-        href={"/reviews"}
+        href={`/reviews/${Auth.getProfile().data.username}`}
       >
         {"Your Reviews"}
       </Link>

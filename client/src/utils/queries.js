@@ -22,6 +22,12 @@ export const USER_QUERY = gql`
       _id
       username
       email
+      reviews {
+        _id
+        reviewText
+        createdAt
+        username
+      }
     }
   }
 `;

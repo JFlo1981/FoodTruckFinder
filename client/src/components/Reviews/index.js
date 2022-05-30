@@ -12,8 +12,7 @@ import {
 
 const Reviews = ({ reviews }) => {
   // console.log(reviews);
-
-  if (!reviews.length) {
+  if (!reviews) {
     return (
       <Box>
         <chakra.p>Be the First to Leave a Review!</chakra.p>
