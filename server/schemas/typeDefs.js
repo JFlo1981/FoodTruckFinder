@@ -41,17 +41,6 @@ const typeDefs = gql`
     token: ID!
     user: User
   }
-  input inputTruck {
-    _id: ID
-    owners: [String]
-    description: String
-    image: String
-    link: String
-    truckName: String!
-    location: String
-    hours: String!
-    menu: String
-  }
   type Query {
     me: User
     users: [User]

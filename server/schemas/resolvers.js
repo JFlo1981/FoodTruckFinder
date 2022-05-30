@@ -38,10 +38,10 @@ const resolvers = {
     },
     trucks: async (parent, { username }) => {
       const params = username ? { username } : {};
-      return Truck.find(params).sort({ createdAt: -1 });
+      return Truck.find(params).sort({ createdAt: -1 }).populate("reviews");
     },
     truck: async (parent, { _id }) => {
-      return Truck.findOne({ _id });
+      return Truck.findOne({ _id }).populate("reviews");
     },
   },
 
@@ -75,15 +75,15 @@ const resolvers = {
           username: context.user.username,
         });
 
-        // const updatedUser = await User.findByIdAndUpdate(
-        //   { _id: context.user._id },
-        //   { $push: { reviews: review } },
-        //   { new: true }
-        // );
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $push: { reviews: review._id } },
+          { new: true }
+        );
 
         const updatedTruck = await Truck.findByIdAndUpdate(
           { _id: truckId },
-          { $push: { reviews: { reviewText, reviews: review._id } } },
+          { $push: { reviews: review._id } },
           { new: true }
         );
 
