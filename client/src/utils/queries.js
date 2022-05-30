@@ -43,3 +43,19 @@ export const QUERY_REVIEWS = gql`
     }
   }
 `;
+
+export const QUERY_TRUCK = gql`
+  {
+    trucks {
+      _id
+      owners
+      description
+      image
+      link
+      truckName
+      location
+      hours
+      menu
+    }
+  }
+`;
