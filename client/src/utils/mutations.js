@@ -25,19 +25,9 @@ export const CREATE_USER = gql`
 `;
 
 export const CREATE_REVIEW = gql`
-  mutation Mutation($reviewText: String!) {
-    addReview(reviewText: $reviewText) {
+  mutation Mutation($reviewText: String!, $truckId: ID!) {
+    addReview(reviewText: $reviewText, truckId: $truckId) {
       _id
-      reviewText
-      createdAt
-      username
-      reactionCount
-      reactions {
-        _id
-        reactionBody
-        createdAt
-        username
-      }
     }
   }
 `;

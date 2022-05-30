@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { CREATE_REVIEW } from "../../utils/mutations";
-import { ME_QUERY, QUERY_REVIEWS } from "../../utils/queries";
+// import { ME_QUERY, QUERY_REVIEWS } from "../../utils/queries";
 import {
   Box,
   Button,
@@ -19,6 +19,7 @@ function ReviewForm() {
   // Form States
   const [reviewText, setCurrentReviewContent] = useState("");
   const [characterAmount, setCharacterAmount] = useState(0);
+  const truckId = window.location.href.split("/")[5];
 
   // updates characterAmount/reviewContent state based on User input changes
   const handleUserInput = (event) => {
@@ -39,13 +40,14 @@ function ReviewForm() {
     try {
       console.log(typeof reviewText);
       await addReview({
-        variables: { reviewText },
+        variables: { reviewText, truckId },
       });
 
-      console.log("Made it");
       // Clear the textarea and reset Character Limit
       setCurrentReviewContent("");
       setCharacterAmount(0);
+
+      window.location.reload();
     } catch (e) {
       console.error(e);
     }
