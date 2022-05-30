@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import Auth from "../../utils/auth";
+import Links from "../Links";
 
 const Header = () => {
   // Mobile Nav definitions through Chakra UI Hook
@@ -22,56 +23,6 @@ const Header = () => {
 
   // Light/Darkmode Chakra UI Hook
   const { colorMode, toggleColorMode } = useColorMode();
-
-  // User Dashboard Link
-  const userLinks = (
-    <div>
-      <Link
-        px={2}
-        py={1}
-        rounded={"md"}
-        _hover={{
-          textDecoration: "none",
-          bg: ("gray.200", "gray.300"),
-        }}
-        href={"/reviews"}
-      >
-        {"Your Reviews"}
-      </Link>
-    </div>
-  );
-
-  // Owner Account Links
-  const ownerLinks = (
-    <Link
-      px={2}
-      py={1}
-      rounded={"md"}
-      _hover={{
-        textDecoration: "none",
-        bg: ("gray.200", "gray.300"),
-      }}
-      href={"/account"}
-    >
-      {"Account"}
-    </Link>
-  );
-
-  // Owner control over open/closed
-  // const isOpenButton = (
-  //   <Button
-  //     fontSize={"sm"}
-  //     fontWeight={600}
-  //     color={"white"}
-  //     bg={"green.400"}
-  //     marginRight={2}
-  //     _hover={{
-  //       bg: "green.300",
-  //     }}
-  //   >
-  //     Open
-  //   </Button>
-  // );
 
   // On submit of Logout Buttom, attempt sign User out
   // Will reload to the homepage
@@ -130,10 +81,11 @@ const Header = () => {
               >
                 {"Search for Trucks"}
               </Link>
+
+              {/* Links Component */}
               {Auth.loggedIn() ? (
                 <>
-                  {userLinks}
-                  {ownerLinks}
+                  <Links />
                 </>
               ) : (
                 <></>
@@ -142,8 +94,6 @@ const Header = () => {
           </HStack>
 
           <Flex alignItems={"center"}>
-            {/* {Auth.loggedIn() ? <>{isOpenButton}</> : <></>} */}
-
             {/* Light/Dark Mode Button */}
             <Button onClick={toggleColorMode}>
               {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
@@ -188,7 +138,15 @@ const Header = () => {
               >
                 {"Search for Trucks"}
               </Link>
-              {Auth.loggedIn() ? <>{userLinks}</> : null}
+
+              {/* Links Component */}
+              {Auth.loggedIn() ? (
+                <>
+                  <Links />
+                </>
+              ) : (
+                <></>
+              )}
             </Stack>
           </Box>
         ) : null}
