@@ -69,8 +69,6 @@ const resolvers = {
       return { token, user };
     },
     addReview: async (parent, { reviewText, truckId }, context) => {
-      console.log(truckId);
-
       if (context.user) {
         const review = await Review.create({
           reviewText,
@@ -85,7 +83,7 @@ const resolvers = {
 
         const updatedTruck = await Truck.findByIdAndUpdate(
           { _id: truckId },
-          { $push: { reviews: review } },
+          { $push: { reviews: { reviewText, reviews: review._id } } },
           { new: true }
         );
 
