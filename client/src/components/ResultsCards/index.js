@@ -3,22 +3,12 @@ import React from "react";
 import { Box, Image, Flex, Button, Link } from "@chakra-ui/react";
 
 const resultCards = ({ trucks }) => {
-  // const property = {
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1620589125156-fd5028c5e05b?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1787",
-  //   imageAlt: "Rear view of modern home with pool",
-  //   title: "Fish & Chips",
-  //   hours: "9am-5pm",
-  //   reviewCount: 34,
-  //   rating: 4,
-  // };
-
   return (
     <Flex p={50} w="full" alignItems="center" justifyContent="center">
       {trucks &&
         trucks.map((truck) => (
           <Box
-            key={truck.truckName}
+            key={truck._id}
             maxW="sm"
             borderWidth="1px"
             rounded="lg"
@@ -52,7 +42,7 @@ const resultCards = ({ trucks }) => {
                 }}
                 marginTop={"5"}
               >
-                <Link href={"/truck"}>View Truck</Link>
+                <Link href={`/truck/${truck._id}`}>View Truck</Link>
               </Button>
             </Flex>
           </Box>

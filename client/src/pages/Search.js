@@ -3,13 +3,11 @@ import { Heading, Image, Stack, useColorModeValue } from "@chakra-ui/react";
 import ResultCards from "../components/ResultsCards";
 import App from "../components/Map";
 import { useQuery } from "@apollo/client";
-import { QUERY_TRUCK } from "../utils/queries";
+import { QUERY_TRUCKS } from "../utils/queries";
 
 function Search() {
-  const { loading, data } = useQuery(QUERY_TRUCK);
+  const { loading, data } = useQuery(QUERY_TRUCKS);
   const trucks = data?.trucks || [];
-
-  console.log(trucks);
 
   return (
     <div>
@@ -23,7 +21,7 @@ function Search() {
           align={"center"}
           pos={"relative"}
         >
-          <Heading>Results for "City"</Heading>
+          <Heading>FoodTruckFinder Trucks</Heading>
           <ResultCards trucks={trucks} />
         </Stack>
       </div>
