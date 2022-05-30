@@ -1,7 +1,7 @@
 import React from "react";
-import { Heading, Image, Stack, useColorModeValue } from "@chakra-ui/react";
+import { Heading, Image, Stack, useColorModeValue, useForceUpdate } from "@chakra-ui/react";
 import ResultCards from "../components/ResultsCards";
-import App from "../components/Map"
+import App from "../components/Map/index"
 
 function Search() {
   return (
