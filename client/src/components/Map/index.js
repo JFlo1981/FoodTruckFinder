@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   GoogleMap,
   useLoadScript,
@@ -23,22 +23,18 @@ const center = {
 
 const options = {
   styles: mapStyles,
-  
 };
 
-function useForceUpdate(){
+function useForceUpdate() {
   const [value, setValue] = useState(0); // integer state
-  return () => setValue(value => value + 1); // update the state to force render
+  return () => setValue((value) => value + 1); // update the state to force render
 }
-
-
 
 function App() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
- 
 
   const forceUpdate = useForceUpdate();
   const [selected, setSelected] = React.useState(null);
@@ -46,50 +42,49 @@ function App() {
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
 
-
   return (
-     
-    <div >
+    <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={14}
         center={center}
         options={options}
       >
-      {austinData.map((truck) => (
-        <Marker
-          key={truck.id}
-          position={{
-            lat: truck.coordinates.latitude,
-            lng: truck.coordinates.longitude,
-          }}
-          icon={{
-            url: pic,
-            scaledSize: new window.google.maps.Size(70,70),
-          }}
-          onClick={() =>{
-            setSelected(truck);
-           
-          }}
-          
-          
-        />
-      ))}
-      
-    
-      {selected && (<InfoWindow  position={{ lat: selected.coordinates.latitude, lng: selected.coordinates.longitude}}
-      onCloseClick={() => {
-        setSelected(null);
-      }}
-      >
-        <div>
-          <h2>{selected.name}</h2>
-          <p>Rating: {selected.rating} stars</p>
-          <p>{selected.location.display_address}</p>
-          <Link href={"/truck"}>View Truck</Link>
-        </div>
-      </InfoWindow>) }
+        {austinData.map((truck) => (
+          <Marker
+            key={truck.id}
+            position={{
+              lat: truck.coordinates.latitude,
+              lng: truck.coordinates.longitude,
+            }}
+            icon={{
+              url: pic,
+              scaledSize: new window.google.maps.Size(70, 70),
+            }}
+            onClick={() => {
+              setSelected(truck);
+            }}
+          />
+        ))}
 
+        {selected && (
+          <InfoWindow
+            position={{
+              lat: selected.coordinates.latitude,
+              lng: selected.coordinates.longitude,
+            }}
+            onCloseClick={() => {
+              setSelected(null);
+            }}
+          >
+            <div>
+              <h2>{selected.name}</h2>
+              <p>Rating: {selected.rating} stars</p>
+              <p>{selected.location.display_address}</p>
+              <Link href={"/truck"}>View Truck</Link>
+            </div>
+          </InfoWindow>
+        )}
 
         {/* <Marker position={{ lat: 30.2672, lng: -97.7431 }} icon={{
               url: pic,
@@ -97,11 +92,9 @@ function App() {
             }}></Marker> */}
 
         {/* {console.log(austinData[0].coordinates.latitude)} */}
-        
       </GoogleMap>
     </div>
   );
 }
 
-
-export default React.memo(App)
+export default React.memo(App);
