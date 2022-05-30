@@ -1,33 +1,46 @@
-const { Schema } = require('mongoose');
+const { Schema, model } = require("mongoose");
+const Review = require("./Review");
 
-const truckSchema = new Schema({
-  owner: [
-    {
+const truckSchema = new Schema(
+  {
+    owner: {
       type: String,
     },
-  ],
-  description: {
-    type: String,
-    required: true,
+    description: {
+      type: String,
+      required: true,
+    },
+    image: {
+      type: String,
+    },
+    link: {
+      type: String,
+    },
+    truckName: {
+      type: String,
+      required: true,
+    },
+    location: {
+      type: String,
+      required: true,
+    },
+    hours: {
+      type: String,
+      required: true,
+    },
+    menu: {
+      type: String,
+    },
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
   },
-  truckId: {
-    type: String,
-    required: true,
-  },
-  image: {
-    type: String,
-  },
-  link: {
-    type: String,
-  },
-  truckName: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String, 
-    required: true
+  {
+    toJSON: {
+      virtuals: true,
+      getters: true,
+    },
   }
-});
+);
 
-module.exports = truckSchema;
+const Truck = model("Truck", truckSchema);
+
+module.exports = Truck;
