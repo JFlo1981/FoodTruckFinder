@@ -63,13 +63,14 @@ const typeDefs = gql`
     addReaction(reviewId: ID!, reactionBody: String!): Review
     addFriend(friendId: ID!): User
     addTruck(
-      owners: [String]
+      owners: String
       description: String
       image: String
       link: String
       truckName: String
       hours: String
       location: String
+      menu: String
     ): User
     removeTruck(_id: ID!): Auth
     editTruck(truckId: String!): Auth

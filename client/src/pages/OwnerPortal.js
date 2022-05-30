@@ -75,7 +75,8 @@ const OwnerPortal = () => {
       >
         <Stack spacing={4} mx={"auto"} py={12} px={3} className="signUpForm">
           <Stack align={"center"} textAlign={"center"}>
-            <Heading fontSize={"4xl"}>FoodTruckFinder 🎉</Heading>
+            <Heading fontSize={"4xl"}>FoodTruckFinder</Heading>
+            <Heading fontSize={"1xl"}> For Business Owners </Heading>
             <Text fontSize={"lg"} color={"gray.600"}>
               Register your Truck. Tell us about your Business. Bring in the
               customers!

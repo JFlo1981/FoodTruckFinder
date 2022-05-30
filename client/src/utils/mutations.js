@@ -31,3 +31,29 @@ export const CREATE_REVIEW = gql`
     }
   }
 `;
+
+export const CREATE_TRUCK = gql`
+  mutation Mutation(
+    $owners: String
+    $description: String
+    $image: String
+    $link: String
+    $truckName: String
+    $hours: String
+    $location: String
+    $menu: String
+  ) {
+    addTruck(
+      owners: $owners
+      description: $description
+      image: $image
+      link: $link
+      truckName: $truckName
+      hours: $hours
+      location: $location
+      menu: $menu
+    ) {
+      _id
+    }
+  }
+`;
