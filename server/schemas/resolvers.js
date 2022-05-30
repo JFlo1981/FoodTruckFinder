@@ -92,6 +92,29 @@ const resolvers = {
 
       throw new AuthenticationError("You need to be logged in!");
     },
+    removeReview: async (parent, { reviewId, truckId }, context) => {
+      if (context.user) {
+        const review = await Review.findOneAndDelete({
+          _id: reviewId,
+        });
+
+        const updatedUser = await User.findByIdAndUpdate(
+          { _id: context.user._id },
+          { $pull: { reviews: review._id } },
+          { new: true }
+        );
+
+        const updatedTruck = await Truck.findByIdAndUpdate(
+          { _id: truckId },
+          { $pull: { reviews: review._id } },
+          { new: true }
+        );
+
+        return updatedTruck;
+      }
+
+      throw new AuthenticationError("You need to be logged in!");
+    },
     addReaction: async (parent, { reviewId, reactionBody }, context) => {
       if (context.user) {
         const updatedReview = await Review.findOneAndUpdate(
