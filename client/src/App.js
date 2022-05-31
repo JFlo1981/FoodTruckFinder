@@ -20,6 +20,7 @@ import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
 import SingleTruck from "./pages/singleTruck";
 import Portal from "./pages/Portal";
+import OwnerPortal from "./pages/OwnerPortal";
 
 // Establish a new link to the GraphQL server
 const httpLink = createHttpLink({
@@ -54,6 +55,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/portal" element={<Portal />} />
+              <Route path="/portal/owner" element={<OwnerPortal />} />
               <Route path="/reviews/:username" element={<Dashboard />} />
               <Route path="/account" element={<Account />} />
               <Route path="/truck/:id" element={<SingleTruck />} />

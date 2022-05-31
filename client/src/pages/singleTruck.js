@@ -1,39 +1,15 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
-import { QUERY_TRUCK } from "../utils/queries";
-import Reviews from "../components/Reviews";
-import {
-  Box,
-  Container,
-  Stack,
-  Text,
-  Image,
-  Flex,
-  VStack,
-  Heading,
-  SimpleGrid,
-  StackDivider,
-  // useColorModeValue,
-  List,
-  Link,
-  ListItem,
-} from "@chakra-ui/react";
+import { Container, Link } from "@chakra-ui/react";
 import austinData from "../components/data";
+import TruckInfo from "../components/TruckInfo";
+import TruckInfoDb from "../components/TruckInfoDb";
 
 function SingleTruck() {
   const { id: truckId } = useParams();
-
   const truck = austinData.filter((truck) => truck.id === truckId);
-  
 
-
-console.log(truck);
-// console.log(truck.findIndex(test));
-
-  // const reviewLength = truck.reviews.length;
-
-
+  // console.log(truck);
   return (
     <>
     {truck.map(({ id, name, image_url, url, phone, reviews  }) => (
@@ -202,8 +178,20 @@ console.log(truck);
       </Container>
     </div>
       ))}
+      <div>
+        <Container maxW={"7xl"}>
+          <Link marginTop={2} wordBreak="break-word" href="/search">
+            Back to Map
+          </Link>
+          {truck[0] ? <TruckInfo /> : <TruckInfoDb />}
+        </Container>
+      </div>
     </>
   );
 }
 
 export default SingleTruck;
+
+// console.log(truck.findIndex(test));
+
+// const reviewLength = truck.reviews.length;
