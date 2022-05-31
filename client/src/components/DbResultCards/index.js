@@ -48,7 +48,7 @@ const DbResultCards = ({ trucks }) => {
                 marginBottom={"4"}
                 width={"80%"}
               >
-                <Link href={"/truck"}>View Truck</Link>
+                <Link href={`/truck/${truck._id}`}>View Truck</Link>
               </Button>
             </Box>
           </Box>

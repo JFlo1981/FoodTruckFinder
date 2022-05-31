@@ -24,8 +24,8 @@ function Search() {
           align={"center"}
           pos={"relative"}
         >
-          <Heading>FoodTruckFinder Trucks</Heading>
-          <Flex p={50} w="full" alignItems="center" justifyContent="center">
+          <Heading marginBottom={5}>Truck Results</Heading>
+          <Flex w="full" alignItems="center" justifyContent="center">
             <SimpleGrid
               columns={{ base: 1, md: 2, xl: 4 }}
               spacing={"20"}
