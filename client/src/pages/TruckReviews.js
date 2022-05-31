@@ -6,6 +6,7 @@ import { Heading, Link } from "@chakra-ui/react";
 import Reviews from "../components/Reviews";
 import ReviewForm from "../components/ReviewForm";
 import Auth from "../utils/auth";
+import ReviewsEx from "../components/ReviewsEx";
 
 const TruckReviews = () => {
   const { id: truckId } = useParams();
@@ -36,6 +37,7 @@ const TruckReviews = () => {
         <></>
       )}
 
+      {/* <ReviewsEx /> */}
       <Reviews reviews={truck.reviews} />
     </div>
   );

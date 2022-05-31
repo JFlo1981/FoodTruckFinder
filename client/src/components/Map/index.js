@@ -65,8 +65,7 @@ function App() {
               setSelected(truck);
             }}
           />
-        ))}
-
+        ))}{" "}
         {selected && (
           <InfoWindow
             position={{
@@ -85,12 +84,10 @@ function App() {
             </div>
           </InfoWindow>
         )}
-
         {/* <Marker position={{ lat: 30.2672, lng: -97.7431 }} icon={{
               url: pic,
               scaledSize: new window.google.maps.Size(30,30),
             }}></Marker> */}
-
         {/* {console.log(austinData[0].coordinates.latitude)} */}
       </GoogleMap>
     </div>
