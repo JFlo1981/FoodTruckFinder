@@ -11,6 +11,7 @@ import pic from "../icon.svg";
 import { Link } from "@chakra-ui/react";
 // import marker from "../Marker";
 
+
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
@@ -81,7 +82,7 @@ function App() {
               <h2>{selected.name}</h2>
               <p>Rating: {selected.rating} stars</p>
               <p>{selected.location.display_address}</p>
-              <Link href={"/truck"}>View Truck</Link>
+              <Link href={`/truck/${selected.id}`}>View Truck</Link>
             </div>
           </InfoWindow>
         )}

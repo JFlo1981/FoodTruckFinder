@@ -1,7 +1,7 @@
 import React from "react";
 import { Heading, Stack } from "@chakra-ui/react";
 import ResultCards from "../components/ResultsCards";
-// import App from "../components/Map";
+import App from "../components/Map";
 import { useQuery } from "@apollo/client";
 import { QUERY_TRUCKS } from "../utils/queries";
 
@@ -14,7 +14,7 @@ function Search() {
   }
   return (
     <div>
-      {/* <App /> */}
+      <App />
       <div className="searchResults">
         <Stack
           // bg={useColorModeValue("white", "gray.800")}
