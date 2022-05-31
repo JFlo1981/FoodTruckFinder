@@ -10,7 +10,7 @@ import {
   Heading,
   SimpleGrid,
   StackDivider,
-  //   useColorModeValue,
+  useColorModeValue,
   List,
   Link,
   ListItem,

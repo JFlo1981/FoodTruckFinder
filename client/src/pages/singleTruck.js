@@ -17,8 +17,7 @@ function SingleTruck() {
           <Link marginTop={2} wordBreak="break-word" href="/search">
             Back to Map
           </Link>
-          {/* {truck ? <TruckInfo /> : <TruckInfoDb />} */}
-          <TruckInfoDb />
+          {truck[0] ? <TruckInfo /> : <TruckInfoDb />}
         </Container>
       </div>
     </>
