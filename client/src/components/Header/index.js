@@ -58,20 +58,20 @@ const Header = () => {
   );
 
   // Owner control over open/closed
-  const isOpenButton = (
-    <Button
-      fontSize={"sm"}
-      fontWeight={600}
-      color={"white"}
-      bg={"green.400"}
-      marginRight={2}
-      _hover={{
-        bg: "green.300",
-      }}
-    >
-      Open
-    </Button>
-  );
+  // const isOpenButton = (
+  //   <Button
+  //     fontSize={"sm"}
+  //     fontWeight={600}
+  //     color={"white"}
+  //     bg={"green.400"}
+  //     marginRight={2}
+  //     _hover={{
+  //       bg: "green.300",
+  //     }}
+  //   >
+  //     Open
+  //   </Button>
+  // );
 
   // On submit of Logout Buttom, attempt sign User out
   // Will reload to the homepage
@@ -142,7 +142,7 @@ const Header = () => {
           </HStack>
 
           <Flex alignItems={"center"}>
-            {Auth.loggedIn() ? <>{isOpenButton}</> : <></>}
+            {/* {Auth.loggedIn() ? <>{isOpenButton}</> : <></>} */}
 
             {/* Light/Dark Mode Button */}
             <Button onClick={toggleColorMode}>

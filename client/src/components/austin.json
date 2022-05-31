@@ -21,7 +21,7 @@
                     "title": "Barbeque"
                 }
             ],
-            "rating": 4.0,
+            "rating": "4.0",
             "coordinates": {
                 "latitude": 30.27007,
                 "longitude": -97.74187
@@ -69,7 +69,7 @@
                     "title": "Seafood"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.2670779,
                 "longitude": -97.7456564
@@ -117,7 +117,7 @@
                     "title": "Latin American"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.2641113,
                 "longitude": -97.7301493
@@ -162,7 +162,7 @@
                     "title": "Taiwanese"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.18526,
                 "longitude": -97.79213
@@ -210,7 +210,7 @@
                     "title": "Tacos"
                 }
             ],
-            "rating": 5.0,
+            "rating": "5.0",
             "coordinates": {
                 "latitude": 30.32118,
                 "longitude": -97.7395
@@ -259,7 +259,7 @@
                     "title": "Halal"
                 }
             ],
-            "rating": 5.0,
+            "rating": "5.0",
             "coordinates": {
                 "latitude": 30.283955,
                 "longitude": -97.719837
@@ -299,7 +299,7 @@
                     "title": "Food Trucks"
                 }
             ],
-            "rating": 4.0,
+            "rating": "4.0",
             "coordinates": {
                 "latitude": 30.263674,
                 "longitude": -97.762669
@@ -347,7 +347,7 @@
                     "title": "Sandwiches"
                 }
             ],
-            "rating": 4.5,
+            "rating":"4.5",
             "coordinates": {
                 "latitude": 30.261993,
                 "longitude": -97.7226715
@@ -395,7 +395,7 @@
                     "title": "Food Trucks"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.269513,
                 "longitude": -97.736244
@@ -443,7 +443,7 @@
                     "title": "Food Trucks"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.2621200840611,
                 "longitude": -97.724519893527
@@ -490,7 +490,7 @@
                     "title": "Food Trucks"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.22695652296863,
                 "longitude": -97.76249472956155
@@ -535,7 +535,7 @@
                     "title": "Food Trucks"
                 }
             ],
-            "rating": 4.0,
+            "rating": "4.0",
             "coordinates": {
                 "latitude": 30.25096,
                 "longitude": -97.75421
@@ -584,7 +584,7 @@
                     "title": "Sandwiches"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.29051,
                 "longitude": -97.74464
@@ -629,7 +629,7 @@
                     "title": "Barbeque"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.1673435,
                 "longitude": -97.8273727
@@ -674,7 +674,7 @@
                     "title": "Food Trucks"
                 }
             ],
-            "rating": 4.0,
+            "rating": "4.0",
             "coordinates": {
                 "latitude": 30.242831833285123,
                 "longitude": -97.72956334919355
@@ -719,7 +719,7 @@
                     "title": "Tacos"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.230874717437793,
                 "longitude": -97.79188449999891
@@ -764,7 +764,7 @@
                     "title": "Indian"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.251903,
                 "longitude": -97.753903
@@ -809,7 +809,7 @@
                     "title": "Mexican"
                 }
             ],
-            "rating": 4.0,
+            "rating": "4.0",
             "coordinates": {
                 "latitude": 30.2619868,
                 "longitude": -97.722894
@@ -850,7 +850,7 @@
                     "title": "Food Trucks"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.27271,
                 "longitude": -97.72847
@@ -895,7 +895,7 @@
                     "title": "Italian"
                 }
             ],
-            "rating": 4.5,
+            "rating": "4.5",
             "coordinates": {
                 "latitude": 30.26356038180196,
                 "longitude": -97.76294882445424

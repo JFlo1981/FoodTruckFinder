@@ -1,36 +1,36 @@
-const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction');
-const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require("mongoose");
+const reactionSchema = require("./Reaction");
+const dateFormat = require("../utils/dateFormat");
 
 const reviewSchema = new Schema(
   {
     reviewText: {
       type: String,
       minlength: 1,
-      maxlength: 280
+      maxlength: 280,
     },
     createdAt: {
       type: Date,
       default: Date.now,
-      get: timestamp => dateFormat(timestamp)
+      get: (timestamp) => dateFormat(timestamp),
     },
     username: {
       type: String,
-      required: true
+      required: true,
     },
-    reactions: [reactionSchema]
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
-      getters: true
-    }
+      getters: true,
+    },
   }
 );
 
-reviewSchema.virtual('reactionCount').get(function() {
+reviewSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
-const Review = model('Review', reviewSchema);
+const Review = model("Review", reviewSchema);
 
 module.exports = Review;

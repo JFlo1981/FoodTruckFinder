@@ -2,9 +2,9 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
-  ApolloProvider,
   ApolloClient,
   InMemoryCache,
+  ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
@@ -54,11 +54,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
               <Route path="/portal" element={<Portal />} />
-              <Route path="/reviews" element={<Dashboard />} />
               <Route path="/reviews/:username" element={<Dashboard />} />
               <Route path="/account" element={<Account />} />
-              <Route path="/truck" element={<SingleTruck />} />
-              <Route path="/truck/reviews" element={<TruckReviews />} />
+              <Route path="/truck/:id" element={<SingleTruck />} />
+              <Route path="/truck/reviews/:id" element={<TruckReviews />} />
               <Route path="/about" element={<About />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="*" element={<NoMatch />} />

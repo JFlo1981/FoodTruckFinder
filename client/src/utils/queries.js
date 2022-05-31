@@ -22,6 +22,12 @@ export const USER_QUERY = gql`
       _id
       username
       email
+      reviews {
+        _id
+        reviewText
+        createdAt
+        username
+      }
     }
   }
 `;
@@ -40,6 +46,43 @@ export const QUERY_REVIEWS = gql`
         username
         reactionBody
       }
+    }
+  }
+`;
+
+export const QUERY_TRUCK = gql`
+  query Truck($id: ID!) {
+    truck(_id: $id) {
+      _id
+      owners
+      description
+      image
+      link
+      truckName
+      location
+      hours
+      menu
+      reviews {
+        reviewText
+        createdAt
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_TRUCKS = gql`
+  {
+    trucks {
+      _id
+      owners
+      description
+      image
+      link
+      truckName
+      location
+      hours
+      menu
     }
   }
 `;
