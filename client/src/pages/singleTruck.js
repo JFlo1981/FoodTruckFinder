@@ -19,25 +19,104 @@ import {
   Link,
   ListItem,
 } from "@chakra-ui/react";
+import austinData from "../components/data";
 
 function SingleTruck() {
   const { id: truckId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_TRUCK, {
-    variables: { id: truckId },
-  });
+  const truck = austinData.filter((truck) => truck.id === truckId);
+  
 
-  const truck = data?.truck || {};
 
-  if (loading) {
-    return <div>Now Loading...</div>;
-  }
+console.log(truck);
+// console.log(truck.findIndex(test));
 
-  const reviewLength = truck.reviews.length;
+  // const reviewLength = truck.reviews.length;
 
-  // Display Business Information: Email, Website
-  const businessDisplay = (
-    <Box>
+
+  return (
+    <>
+    {truck.map(({ id, name, image_url, url, phone  }) => (
+      <div>
+      <Container maxW={"7xl"}>
+        <Link marginTop={2} wordBreak="break-word" href="/search">
+          Back to Map
+        </Link>
+        <SimpleGrid
+          columns={{ base: 1, lg: 2 }}
+          spacing={{ base: 8, md: 10 }}
+          py={{ base: 18, md: 24 }}
+        >
+          {/* Truck Image */}
+          <Flex>
+            <Image
+              rounded={"md"}
+              alt={"product image"}
+              src={image_url}
+              fit={"cover"}
+              align={"center"}
+              w={"100%"}
+              h={{ base: "100%", sm: "400px", lg: "500px" }}
+            />
+          </Flex>
+          {/* Truck Basic Information */}
+          <Stack spacing={{ base: 6, md: 10 }}>
+            <Box as={"header"}>
+              <Heading
+                lineHeight={1.1}
+                fontWeight={600}
+                fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
+              >
+                {name}
+              </Heading>
+              <Text
+                // color={useColorModeValue("gray.900", "gray.400")}
+                fontWeight={300}
+                fontSize={"2xl"}
+              >
+                {truck.rating}
+              </Text>
+              <Flex
+                alignItems="center"
+                mt={2}
+                // color={useColorModeValue("gray.700", "gray.200")}
+              >
+                {/* <span>{reviewLength} Reviews</span> */}
+
+                <Link
+                  mx={2}
+                  cursor="pointer"
+                  textDecor="underline"
+                  // color={useColorModeValue("blue.600", "blue.400")}
+                  wordBreak="break-word"
+                  href={`/truck/reviews/${truck._id}`}
+                >
+                  See All Reviews
+                </Link>
+              </Flex>
+            </Box>
+            <>
+    </>
+            <Stack
+              spacing={{ base: 4, sm: 6 }}
+              direction={"column"}
+              divider={
+                <StackDivider
+                // borderColor={useColorModeValue("gray.200", "gray.600")}
+                />
+              }
+            >
+              <VStack spacing={{ base: 4, sm: 6 }}>
+                <Text
+                  // color={useColorModeValue("gray.500", "gray.400")}
+                  fontSize={"2xl"}
+                  fontWeight={"300"}
+                >
+                  {truck.name}
+                </Text>
+              </VStack>
+
+              <Box>
       <Text
         fontSize={{ base: "16px", lg: "18px" }}
         // color={useColorModeValue("yellow.500", "yellow.300")}
@@ -51,7 +130,7 @@ function SingleTruck() {
       <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
         <List spacing={2}>
           <ListItem className="bold">
-            Website:{" "}
+            Website: {<Link href={url} target="_blank">Click here to visit site</Link>}
             <span className="link">
               <a href={truck.link} rel="noopener noreferrer" target="_blank">
                 {truck.link}
@@ -59,16 +138,13 @@ function SingleTruck() {
             </span>
           </ListItem>
           <ListItem className="bold">
-            Email: <span className="unbold">{truck.email}</span>
+            Phone Number: <span className="unbold">{phone}</span>
           </ListItem>
         </List>
       </SimpleGrid>
     </Box>
-  );
 
-  // Display Menu (if available, else inform the customer)
-  const menuDisplay = (
-    <Box>
+              <Box>
       <Text
         fontSize={{ base: "16px", lg: "18px" }}
         color={"yellow.500"}
@@ -85,7 +161,7 @@ function SingleTruck() {
           <Image
             rounded={"md"}
             alt={"product image"}
-            src={truck.menu}
+            src={image_url}
             fit={"cover"}
             align={"center"}
             w={"100%"}
@@ -93,10 +169,7 @@ function SingleTruck() {
         </SimpleGrid>
       )}
     </Box>
-  );
 
-  // Display Truck Reviews (if available, else inform the customer)
-  const reviewDisplay = (
     <Box>
       <Text
         fontSize={{ base: "16px", lg: "18px" }}
@@ -116,104 +189,20 @@ function SingleTruck() {
           textDecor="underline"
           // color={useColorModeValue("blue.600", "blue.400")}
           wordBreak="break-word"
-          href={`/truck/reviews/${truck._id}`}
+          href={`/truck/reviews/${id}`}
           marginBottom={10}
         >
           Leave a Review
         </Link>
       </SimpleGrid>
     </Box>
-  );
-
-  return (
-    <div>
-      <Container maxW={"7xl"}>
-        <Link marginTop={2} wordBreak="break-word" href="/search">
-          Back to Map
-        </Link>
-        <SimpleGrid
-          columns={{ base: 1, lg: 2 }}
-          spacing={{ base: 8, md: 10 }}
-          py={{ base: 18, md: 24 }}
-        >
-          {/* Truck Image */}
-          <Flex>
-            <Image
-              rounded={"md"}
-              alt={"product image"}
-              src={truck.image}
-              fit={"cover"}
-              align={"center"}
-              w={"100%"}
-              h={{ base: "100%", sm: "400px", lg: "500px" }}
-            />
-          </Flex>
-          {/* Truck Basic Information */}
-          <Stack spacing={{ base: 6, md: 10 }}>
-            <Box as={"header"}>
-              <Heading
-                lineHeight={1.1}
-                fontWeight={600}
-                fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-              >
-                {truck.truckName}
-              </Heading>
-              <Text
-                // color={useColorModeValue("gray.900", "gray.400")}
-                fontWeight={300}
-                fontSize={"2xl"}
-              >
-                {truck.hours}
-              </Text>
-              <Flex
-                alignItems="center"
-                mt={2}
-                // color={useColorModeValue("gray.700", "gray.200")}
-              >
-                <span>{reviewLength} Reviews</span>
-
-                <Link
-                  mx={2}
-                  cursor="pointer"
-                  textDecor="underline"
-                  // color={useColorModeValue("blue.600", "blue.400")}
-                  wordBreak="break-word"
-                  href={`/truck/reviews/${truck._id}`}
-                >
-                  See All Reviews
-                </Link>
-              </Flex>
-            </Box>
-
-            <Stack
-              spacing={{ base: 4, sm: 6 }}
-              direction={"column"}
-              divider={
-                <StackDivider
-                // borderColor={useColorModeValue("gray.200", "gray.600")}
-                />
-              }
-            >
-              <VStack spacing={{ base: 4, sm: 6 }}>
-                <Text
-                  // color={useColorModeValue("gray.500", "gray.400")}
-                  fontSize={"2xl"}
-                  fontWeight={"300"}
-                >
-                  {truck.description}
-                </Text>
-              </VStack>
-
-              {businessDisplay}
-
-              {menuDisplay}
-
-              {reviewDisplay}
             </Stack>
           </Stack>
         </SimpleGrid>
       </Container>
     </div>
+      ))}
+    </>
   );
 }
 

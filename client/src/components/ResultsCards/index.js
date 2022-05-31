@@ -1,20 +1,25 @@
 import React from "react";
 
-import { Box, Image, Flex, Button, Link } from "@chakra-ui/react";
+import { Box, Image, Flex, Button, Link, flexbox } from "@chakra-ui/react";
+import austinData from "../data";
+
 
 const resultCards = ({ trucks }) => {
+  console.log(austinData)
   return (
     <Flex p={50} w="full" alignItems="center" justifyContent="center">
-      {trucks &&
-        trucks.map((truck) => (
+      {austinData &&
+        austinData.map((truck, index) =>
+        index < 5 && 
+        (
           <Box
-            key={truck._id}
+            key={truck.id}
             maxW="sm"
             borderWidth="1px"
             rounded="lg"
             shadow="lg"
           >
-            <Image src={truck.image} alt={"food truck"} roundedTop="lg" />
+            <Image src={truck.image_url} alt={"food truck"} roundedTop="lg" />
 
             <Flex alignItems="center" justifyContent="space-around">
               <Box p="6">
@@ -25,10 +30,10 @@ const resultCards = ({ trucks }) => {
                   lineHeight="tight"
                   isTruncated
                 >
-                  {truck.truckName}
+                  {truck.name}
                 </Box>
 
-                <Box>{truck.hours}</Box>
+                <Box>Rating: {truck.rating} stars</Box>
               </Box>
 
               <Button
@@ -42,7 +47,7 @@ const resultCards = ({ trucks }) => {
                 }}
                 marginTop={"5"}
               >
-                <Link href={`/truck/${truck._id}`}>View Truck</Link>
+                <Link href={`/truck/${truck.id}`}>View Truck</Link>
               </Button>
             </Flex>
           </Box>
