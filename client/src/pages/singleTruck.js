@@ -36,7 +36,7 @@ console.log(truck);
 
   return (
     <>
-    {truck.map(({ id, name, image_url, url, phone  }) => (
+    {truck.map(({ id, name, image_url, url, phone, reviews  }) => (
       <div>
       <Container maxW={"7xl"}>
         <Link marginTop={2} wordBreak="break-word" href="/search">
@@ -89,7 +89,7 @@ console.log(truck);
                   textDecor="underline"
                   // color={useColorModeValue("blue.600", "blue.400")}
                   wordBreak="break-word"
-                  href={`/truck/reviews/${truck._id}`}
+                  href={`/truck/reviews/${id}`}
                 >
                   See All Reviews
                 </Link>

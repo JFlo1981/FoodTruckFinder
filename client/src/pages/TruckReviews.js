@@ -12,23 +12,19 @@ import austinData from "../components/data";
 const TruckReviews = () => {
   const { id: truckId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_TRUCK, {
-    variables: { id: truckId },
-  });
-
-  const truck = data?.truck || {};
-
-  if (loading) {
-    return <div>Now Loading...</div>;
-  }
-
+  const truck = austinData.filter((truck) => truck.id === truckId);
+  const test = truck.map((truck) => truck.reviews.map((text) => text));
+  console.log(truck[0].reviews);
+  console.log(test);
   return (
-    <div>
-      <Link marginTop={2} wordBreak="break-word" href={`/truck/${truck._id}`}>
+    <>
+    {truck.map(({ name, reviews, rating, id}) => (
+      <div>
+      <Link marginTop={2} wordBreak="break-word" href={`/truck/${truck.id}`}>
         Back to Truck Details
       </Link>
       <Heading textAlign={"center"} marginTop={"10"} marginBottom={"15"}>
-        Reviews for {truck.truckName}
+        Reviews for {name}
       </Heading>
       {Auth.loggedIn() ? (
         <>
@@ -38,8 +34,11 @@ const TruckReviews = () => {
         <></>
       )}
 
-      <Reviews reviews={truck.reviews} />
+      <Reviews reviews={truck} truckName={name} />
     </div>
+    ))}
+  </>
+    
   );
 };
 
