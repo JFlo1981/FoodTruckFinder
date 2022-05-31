@@ -24,195 +24,189 @@ function TruckInfoDb() {
   const { loading, data } = useQuery(QUERY_TRUCK, {
     variables: { id: truckId },
   });
-  const trucks = data?.trucks || [];
+
+  const truck = data?.truck || {};
+
   if (loading) {
     return <div>Now Loading...</div>;
   }
 
-  console.log(trucks);
-  // const reviewLength = truck.reviews.length;
+  const reviewLength = truck.reviews.length;
 
-  const truck = {
-    _id: "6293d143f28c6a0e0bb2fda4",
-    owners: null,
-    description:
-      "This is a popcorn foodtruck which sells any kind of popcorn you can think of.",
-    image:
-      "https://images.unsplash.com/photo-1565097158282-1094bd0fe46a?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870",
-    link: "https://popcornopolis.com",
-    truckName: "Popcornopolis",
-    location: "Austin",
-    hours: "9am-10pm",
-    menu: null,
-  };
+  // Display Business Information: Email, Website
+  const businessDisplay = (
+    <Box>
+      <Text
+        fontSize={{ base: "16px", lg: "18px" }}
+        // color={useColorModeValue("yellow.500", "yellow.300")}
+        fontWeight={"500"}
+        textTransform={"uppercase"}
+        mb={"4"}
+      >
+        Business Information
+      </Text>
+
+      <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
+        <List spacing={2}>
+          <ListItem className="bold">
+            Website:{" "}
+            <span className="link">
+              <a href={truck.link} rel="noopener noreferrer" target="_blank">
+                {truck.link}
+              </a>
+            </span>
+          </ListItem>
+          <ListItem className="bold">
+            Email: <span className="unbold">{truck.email}</span>
+          </ListItem>
+        </List>
+      </SimpleGrid>
+    </Box>
+  );
+
+  // Display Menu (if available, else inform the customer)
+  const menuDisplay = (
+    <Box>
+      <Text
+        fontSize={{ base: "16px", lg: "18px" }}
+        color={"yellow.500"}
+        fontWeight={"500"}
+        textTransform={"uppercase"}
+        mb={"4"}
+      >
+        Menu
+      </Text>
+      {!truck.menu ? (
+        <p>Menu Currently Unavailable</p>
+      ) : (
+        <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
+          <Image
+            rounded={"md"}
+            alt={"product image"}
+            src={truck.menu}
+            fit={"cover"}
+            align={"center"}
+            w={"100%"}
+          />
+        </SimpleGrid>
+      )}
+    </Box>
+  );
+
+  // Display Truck Reviews (if available, else inform the customer)
+  const reviewDisplay = (
+    <Box>
+      <Text
+        fontSize={{ base: "16px", lg: "18px" }}
+        // color={useColorModeValue("yellow.500", "yellow.300")}
+        fontWeight={"500"}
+        textTransform={"uppercase"}
+        mb={"4"}
+      >
+        Recent Reviews
+      </Text>
+
+      <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
+        {/* <Reviews reviews={truck.reviews} /> */}
+        <Link
+          mx={2}
+          cursor="pointer"
+          textDecor="underline"
+          // color={useColorModeValue("blue.600", "blue.400")}
+          wordBreak="break-word"
+          href={`/truck/reviews/${truck._id}`}
+          marginBottom={10}
+        >
+          Leave a Review
+        </Link>
+      </SimpleGrid>
+    </Box>
+  );
 
   return (
-    <>
-      {truck.map(() => (
-        <div>
-          <SimpleGrid
-            columns={{ base: 1, lg: 2 }}
-            spacing={{ base: 8, md: 10 }}
-            py={{ base: 18, md: 24 }}
-          >
-            {/* Truck Image */}
-            <Flex>
-              <Image
-                rounded={"md"}
-                alt={"product image"}
-                src={truck.image}
-                fit={"cover"}
-                align={"center"}
-                w={"100%"}
-                h={{ base: "100%", sm: "400px", lg: "500px" }}
-              />
-            </Flex>
-            {/* Truck Basic Information */}
-            <Stack spacing={{ base: 6, md: 10 }}>
-              <Box as={"header"}>
-                <Heading
-                  lineHeight={1.1}
-                  fontWeight={600}
-                  fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-                >
-                  {truck.name}
-                </Heading>
-                {/* <Text
-                  // color={useColorModeValue("gray.900", "gray.400")}
-                  fontWeight={300}
-                  fontSize={"2xl"}
-                >
-                  {rating}
-                </Text> */}
-                <Flex
-                  alignItems="center"
-                  mt={2}
-                  // color={useColorModeValue("gray.700", "gray.200")}
-                >
-                  {/* <span>{reviewLength} Reviews</span> */}
+    <div>
+      <SimpleGrid
+        columns={{ base: 1, lg: 2 }}
+        spacing={{ base: 8, md: 10 }}
+        py={{ base: 18, md: 24 }}
+      >
+        {/* Truck Image */}
+        <Flex>
+          <Image
+            rounded={"md"}
+            alt={"product image"}
+            src={truck.image}
+            fit={"cover"}
+            align={"center"}
+            w={"100%"}
+            h={{ base: "100%", sm: "400px", lg: "500px" }}
+          />
+        </Flex>
+        {/* Truck Basic Information */}
+        <Stack spacing={{ base: 6, md: 10 }}>
+          <Box as={"header"}>
+            <Heading
+              lineHeight={1.1}
+              fontWeight={600}
+              fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
+            >
+              {truck.truckName}
+            </Heading>
+            <Text
+              // color={useColorModeValue("gray.900", "gray.400")}
+              fontWeight={300}
+              fontSize={"2xl"}
+            >
+              {truck.hours}
+            </Text>
+            <Flex
+              alignItems="center"
+              mt={2}
+              // color={useColorModeValue("gray.700", "gray.200")}
+            >
+              <span>{reviewLength} Reviews</span>
 
-                  <Link
-                    mx={2}
-                    cursor="pointer"
-                    textDecor="underline"
-                    // color={useColorModeValue("blue.600", "blue.400")}
-                    wordBreak="break-word"
-                    href={`/truck/reviews/${truck._id}`}
-                  >
-                    See All Reviews
-                  </Link>
-                </Flex>
-              </Box>
-              <></>
-              <Stack
-                spacing={{ base: 4, sm: 6 }}
-                direction={"column"}
-                divider={
-                  <StackDivider
-                  // borderColor={useColorModeValue("gray.200", "gray.600")}
-                  />
-                }
+              <Link
+                mx={2}
+                cursor="pointer"
+                textDecor="underline"
+                // color={useColorModeValue("blue.600", "blue.400")}
+                wordBreak="break-word"
+                href={`/truck/reviews/${truck._id}`}
               >
-                <VStack spacing={{ base: 4, sm: 6 }}>
-                  <Text
-                    // color={useColorModeValue("gray.500", "gray.400")}
-                    fontSize={"2xl"}
-                    fontWeight={"300"}
-                  >
-                    {truck.truckName}
-                  </Text>
-                </VStack>
+                See All Reviews
+              </Link>
+            </Flex>
+          </Box>
 
-                <Box>
-                  <Text
-                    fontSize={{ base: "16px", lg: "18px" }}
-                    // color={useColorModeValue("yellow.500", "yellow.300")}
-                    fontWeight={"500"}
-                    textTransform={"uppercase"}
-                    mb={"4"}
-                  >
-                    Business Information
-                  </Text>
+          <Stack
+            spacing={{ base: 4, sm: 6 }}
+            direction={"column"}
+            divider={
+              <StackDivider
+              // borderColor={useColorModeValue("gray.200", "gray.600")}
+              />
+            }
+          >
+            <VStack spacing={{ base: 4, sm: 6 }}>
+              <Text
+                // color={useColorModeValue("gray.500", "gray.400")}
+                fontSize={"2xl"}
+                fontWeight={"300"}
+              >
+                {truck.description}
+              </Text>
+            </VStack>
 
-                  <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
-                    <List spacing={2}>
-                      <ListItem className="bold">
-                        Website:
-                        <span className="link">
-                          <a
-                            href={truck.link}
-                            rel="noopener noreferrer"
-                            target="_blank"
-                          >
-                            {truck.link}
-                          </a>
-                        </span>
-                      </ListItem>
-                      {/* <ListItem className="bold">
-                        Phone Number: <span className="unbold">{phone}</span>
-                      </ListItem> */}
-                    </List>
-                  </SimpleGrid>
-                </Box>
+            {businessDisplay}
 
-                <Box>
-                  <Text
-                    fontSize={{ base: "16px", lg: "18px" }}
-                    color={"yellow.500"}
-                    fontWeight={"500"}
-                    textTransform={"uppercase"}
-                    mb={"4"}
-                  >
-                    Menu
-                  </Text>
-                  {!truck.menu ? (
-                    <p>Menu Currently Unavailable</p>
-                  ) : (
-                    <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
-                      <Image
-                        rounded={"md"}
-                        alt={"product image"}
-                        src={truck.image}
-                        fit={"cover"}
-                        align={"center"}
-                        w={"100%"}
-                      />
-                    </SimpleGrid>
-                  )}
-                </Box>
+            {menuDisplay}
 
-                <Box>
-                  <Text
-                    fontSize={{ base: "16px", lg: "18px" }}
-                    // color={useColorModeValue("yellow.500", "yellow.300")}
-                    fontWeight={"500"}
-                    textTransform={"uppercase"}
-                    mb={"4"}
-                  >
-                    Recent Reviews
-                  </Text>
-
-                  <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
-                    {/* <Reviews reviews={truck.reviews} /> */}
-                    <Link
-                      mx={2}
-                      cursor="pointer"
-                      textDecor="underline"
-                      // color={useColorModeValue("blue.600", "blue.400")}
-                      wordBreak="break-word"
-                      href={`/truck/reviews/${truck.id}`}
-                      marginBottom={10}
-                    >
-                      Leave a Review
-                    </Link>
-                  </SimpleGrid>
-                </Box>
-              </Stack>
-            </Stack>
-          </SimpleGrid>
-        </div>
-      ))}
-    </>
+            {reviewDisplay}
+          </Stack>
+        </Stack>
+      </SimpleGrid>
+    </div>
   );
 }
 
