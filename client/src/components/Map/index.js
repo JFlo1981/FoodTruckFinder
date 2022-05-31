@@ -11,7 +11,6 @@ import pic from "../icon.svg";
 import { Link } from "@chakra-ui/react";
 // import marker from "../Marker";
 
-
 const libraries = ["places"];
 const mapContainerStyle = {
   width: "100vw",
@@ -26,18 +25,12 @@ const options = {
   styles: mapStyles,
 };
 
-function useForceUpdate() {
-  const [value, setValue] = useState(0); // integer state
-  return () => setValue((value) => value + 1); // update the state to force render
-}
-
 function App() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
   });
 
-  const forceUpdate = useForceUpdate();
   const [selected, setSelected] = React.useState(null);
 
   if (loadError) return "Error loading maps";

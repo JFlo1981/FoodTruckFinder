@@ -3,7 +3,7 @@ import Auth from "../../utils/auth";
 import { Link } from "@chakra-ui/react";
 
 const Links = () => {
-  //   console.log(Auth.getProfile().data.isOwner);
+  console.log(Auth.getProfile().data.isOwner);
 
   // User Dashboard Link
   const userLinks = (
@@ -16,7 +16,7 @@ const Links = () => {
           textDecoration: "none",
           bg: ("gray.200", "gray.300"),
         }}
-        href={"/reviews"}
+        href={`/reviews/${Auth.getProfile().data.username}`}
       >
         {"Your Reviews"}
       </Link>

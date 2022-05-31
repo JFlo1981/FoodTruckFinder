@@ -6,12 +6,6 @@ import { Heading, Link } from "@chakra-ui/react";
 import Reviews from "../components/Reviews";
 import ReviewForm from "../components/ReviewForm";
 import Auth from "../utils/auth";
-<<<<<<< HEAD
-import ReviewsEx from "../components/ReviewsEx";
-=======
-import austinData from "../components/data";
-
->>>>>>> 6218094caee9085899d2e90cef43b5b80d345041
 
 const TruckReviews = () => {
   const { id: truckId } = useParams();
