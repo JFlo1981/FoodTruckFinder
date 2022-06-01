@@ -23,5 +23,8 @@
   "homepage": "https://github.com/JFlo1981/FoodTruckFinder#readme",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "mongoose": "^6.3.5"
   }
 }
