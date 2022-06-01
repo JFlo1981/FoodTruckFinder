@@ -10,7 +10,6 @@ import {
   Heading,
   SimpleGrid,
   StackDivider,
-  useColorModeValue,
   List,
   Link,
   ListItem,
@@ -38,7 +37,6 @@ function TruckInfoDb() {
     <Box>
       <Text
         fontSize={{ base: "16px", lg: "18px" }}
-        // color={useColorModeValue("yellow.500", "yellow.300")}
         fontWeight={"500"}
         textTransform={"uppercase"}
         mb={"4"}
@@ -98,7 +96,6 @@ function TruckInfoDb() {
     <Box>
       <Text
         fontSize={{ base: "16px", lg: "18px" }}
-        // color={useColorModeValue("yellow.500", "yellow.300")}
         fontWeight={"500"}
         textTransform={"uppercase"}
         mb={"4"}
@@ -112,7 +109,6 @@ function TruckInfoDb() {
           mx={2}
           cursor="pointer"
           textDecor="underline"
-          // color={useColorModeValue("blue.600", "blue.400")}
           wordBreak="break-word"
           href={`/truck/reviews/${truck._id}`}
           marginBottom={10}
@@ -152,11 +148,7 @@ function TruckInfoDb() {
             >
               {truck.truckName}
             </Heading>
-            <Text
-              // color={useColorModeValue("gray.900", "gray.400")}
-              fontWeight={300}
-              fontSize={"2xl"}
-            >
+            <Text fontWeight={300} fontSize={"2xl"}>
               {truck.hours}
             </Text>
             <Flex
@@ -170,7 +162,6 @@ function TruckInfoDb() {
                 mx={2}
                 cursor="pointer"
                 textDecor="underline"
-                // color={useColorModeValue("blue.600", "blue.400")}
                 wordBreak="break-word"
                 href={`/truck/reviews/${truck._id}`}
               >
@@ -182,18 +173,10 @@ function TruckInfoDb() {
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={"column"}
-            divider={
-              <StackDivider
-              // borderColor={useColorModeValue("gray.200", "gray.600")}
-              />
-            }
+            divider={<StackDivider />}
           >
             <VStack spacing={{ base: 4, sm: 6 }}>
-              <Text
-                // color={useColorModeValue("gray.500", "gray.400")}
-                fontSize={"2xl"}
-                fontWeight={"300"}
-              >
+              <Text fontSize={"2xl"} fontWeight={"300"}>
                 {truck.description}
               </Text>
             </VStack>

@@ -19,14 +19,14 @@ import austinData from "../data";
 
 function TruckInfo() {
   const { id: truckId } = useParams();
+
   // filter through the AustinData file for the truck we want to display
   const truck = austinData.filter((truck) => truck.id === truckId);
-  //   console.log(truck);
 
   return (
-    <>
-      <div>
-        {truck.map(({ id, name, image_url, url, phone }) => (
+    <div>
+      {truck.map(({ id, name, image_url, url, phone, reviews }) => (
+        <div>
           <SimpleGrid
             columns={{ base: 1, lg: 2 }}
             spacing={{ base: 8, md: 10 }}
@@ -55,7 +55,7 @@ function TruckInfo() {
                   {name}
                 </Heading>
                 <Text
-                  //   color={useColorModeValue("gray.900", "gray.400")}
+                  // color={useColorModeValue("gray.900", "gray.400")}
                   fontWeight={300}
                   fontSize={"2xl"}
                 >
@@ -74,7 +74,7 @@ function TruckInfo() {
                     textDecor="underline"
                     // color={useColorModeValue("blue.600", "blue.400")}
                     wordBreak="break-word"
-                    href={`/truck/reviews/${truck._id}`}
+                    href={`/truck/reviews/${id}`}
                   >
                     See All Reviews
                   </Link>
@@ -192,9 +192,9 @@ function TruckInfo() {
               </Stack>
             </Stack>
           </SimpleGrid>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 }
 

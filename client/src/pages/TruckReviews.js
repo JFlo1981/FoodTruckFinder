@@ -4,39 +4,84 @@ import { useQuery } from "@apollo/client";
 import { QUERY_TRUCK } from "../utils/queries";
 import { Heading, Link } from "@chakra-ui/react";
 import Reviews from "../components/Reviews";
+import ReviewsDb from "../components/ReviewsDb";
 import ReviewForm from "../components/ReviewForm";
 import Auth from "../utils/auth";
+import austinData from "../components/data";
 
 const TruckReviews = () => {
   const { id: truckId } = useParams();
 
   const truck = austinData.filter((truck) => truck.id === truckId);
-  const test = truck.map((truck) => truck.reviews.map((text) => text));
-  console.log(truck[0].reviews);
-  console.log(test);
+  const { loading, data } = useQuery(QUERY_TRUCK, {
+    variables: { id: truckId },
+  });
+
+  const truckDb = data?.truck || {};
+
+  if (loading) {
+    return <div>Now Loading...</div>;
+  }
+
   return (
-    <>
-    {truck.map(({ name, reviews, rating, id}) => (
-      <div>
-      <Link marginTop={2} wordBreak="break-word" href={`/truck/${truck.id}`}>
-        Back to Truck Details
-      </Link>
-      <Heading textAlign={"center"} marginTop={"10"} marginBottom={"15"}>
-        Reviews for {name}
-      </Heading>
-      {Auth.loggedIn() ? (
+    <div>
+      {truck[0] ? (
         <>
-          <ReviewForm />
+          {truck.map(({ name, id }) => (
+            <div>
+              <Link
+                marginTop={4}
+                marginLeft={4}
+                wordBreak="break-word"
+                href={`/truck/${id}`}
+              >
+                Back to Truck Details
+              </Link>
+              <Heading
+                textAlign={"center"}
+                marginTop={"10"}
+                marginBottom={"15"}
+              >
+                Reviews for {name}
+              </Heading>
+              {Auth.loggedIn() ? (
+                <>
+                  <ReviewForm />
+                </>
+              ) : (
+                <></>
+              )}
+
+              <Reviews reviews={truck} truckName={name} />
+            </div>
+          ))}
         </>
       ) : (
-        <></>
-      )}
+        <div>
+          <Link
+            marginTop={4}
+            marginLeft={4}
+            wordBreak="break-word"
+            href={`/truck/${truckDb._id}`}
+          >
+            Back to Truck Details
+          </Link>
+          <Heading textAlign={"center"} marginTop={"10"} marginBottom={"15"}>
+            Reviews for {truckDb.truckName}
+          </Heading>
+          {Auth.loggedIn() ? (
+            <>
+              <ReviewForm />
+            </>
+          ) : (
+            <></>
+          )}
 
-      <Reviews reviews={truck} truckName={name} />
+          {/* <ReviewsEx /> */}
+          <ReviewsDb reviews={truckDb.reviews} />
+        </div>
+      )}
     </div>
-    ))}
-  </>
-    
   );
 };
 

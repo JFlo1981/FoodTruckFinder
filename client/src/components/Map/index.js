@@ -5,6 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+
 import mapStyles from "../MapStyle";
 import austinData from "../data";
 import pic from "../icon.svg";

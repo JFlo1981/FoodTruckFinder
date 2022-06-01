@@ -17,13 +17,7 @@ function Search() {
     <div>
       <App />
       <div className="searchResults">
-        <Stack
-          // bg={useColorModeValue("white", "gray.800")}
-          p={8}
-          rounded={"xl"}
-          align={"center"}
-          pos={"relative"}
-        >
+        <Stack p={8} rounded={"xl"} align={"center"} pos={"relative"}>
           <Heading marginBottom={5}>Truck Results</Heading>
           <Flex w="full" alignItems="center" justifyContent="center">
             <SimpleGrid

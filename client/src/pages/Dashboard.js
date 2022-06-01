@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import Reviews from "../components/Reviews";
+import ReviewsDb from "../components/ReviewsDb";
 import { Avatar, Box, Image, Heading, Text, Flex } from "@chakra-ui/react";
 import { useQuery } from "@apollo/client";
 import { USER_QUERY } from "../utils/queries";
@@ -68,7 +68,7 @@ function Dashboard() {
           position={"relative"}
         >
           <div>
-            <Reviews reviews={user.reviews} />
+            <ReviewsDb reviews={user.reviews} />
           </div>
         </Flex>
       </Box>
