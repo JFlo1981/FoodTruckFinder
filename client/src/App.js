@@ -1,6 +1,13 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Header from "./components/Header";
@@ -14,9 +21,31 @@ import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
 import SingleTruck from "./pages/singleTruck";
 
+// Establish a new link to the GraphQL server
+const httpLink = createHttpLink({
+  uri: "/graphql",
+});
+
+// Middleware function that will retrieve the token for us
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+// Instantiate the Apollo Client instance and create the connection to the API endpoint
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
 function App() {
   return (
-    <div>
+    <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <Header />
@@ -37,7 +66,7 @@ function App() {
           <Footer />
         </div>
       </Router>
-    </div>
+    </ApolloProvider>
   );
 }
 
