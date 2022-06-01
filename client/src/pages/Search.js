@@ -10,9 +10,8 @@ function Search() {
   const { loading, data } = useQuery(QUERY_TRUCKS);
   const trucks = data?.trucks || [];
 
-  if (loading) {
-    return <div>Now Loading...</div>;
-  }
+  if (loading) return "Now Loading...";
+  
   return (
     <div>
       <App />
