@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Container,
   SimpleGrid,
@@ -28,11 +28,25 @@ export default function SplitWithImage() {
           >
             Our Story
           </Text>
-          <Heading>Food Truck Finder Team</Heading>
+          <Heading>The Food Truck Finder Team</Heading>
           <Text color={"gray.500"} fontSize={"lg"}>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
-            nonumy eirmod tempor invidunt ut labore. Something something
-            something...
+            Food Truck Finder is an app that allows you to find Food Trucks in
+            your area. Also, owners of Food Trucks can create an account and add
+            their Food Truck to be discovered in searches. Truck owners can
+            customize their listing by adding their menus, photos of their food,
+            location and hours of operation. When you’re hungry and want to find
+            Food Trucks in your area, search by your city and be able to zoom
+            into the Food Trucks near you. We have A LOT of new and fun features
+            coming to the app in the near future!
+          </Text>
+          <Text
+            fontSize={{ base: "xl", md: "2xl" }}
+            textAlign={"left"}
+            maxW={"3xl"}
+          >
+            The development team behind this app are 4 students of the
+            University of Texas Coding Bootcamp, Liz Dieterich, Jarod Florence,
+            James “Dylan” Killelea, and Bradley Boyd.
           </Text>
           <Stack
             spacing={4}
@@ -43,36 +57,7 @@ export default function SplitWithImage() {
             }
           ></Stack>
         </Stack>
-        <Flex>
-          <Image
-            rounded={"md"}
-            alt={"feature image"}
-            src={require(`../assets/images/team.png`)}
-            objectFit={"cover"}
-          />
-        </Flex>
       </SimpleGrid>
-      <Stack
-        bg={useColorModeValue("gray.50", "gray.800")}
-        py={16}
-        px={8}
-        spacing={{ base: 8, md: 10 }}
-        align={"center"}
-        direction={"column"}
-        className="topSpace"
-      >
-        <Text
-          fontSize={{ base: "xl", md: "2xl" }}
-          textAlign={"center"}
-          maxW={"3xl"}
-        >
-          We need to put something else here! ... had an incredible experience
-          working with Chakra Templates and were impressed they made such a big
-          difference in only three weeks. Our team is so grateful for the
-          wonderful improvements they made and their ability to get familiar
-          with the product concept so quickly.
-        </Text>
-      </Stack>
     </Container>
   );
 }
