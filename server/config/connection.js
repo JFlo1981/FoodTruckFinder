@@ -1,6 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/foodtruckfinder', {
+mongoose.connect(
+  process.env.MONGODB_URI || 'mongodb://localhost/foodtruckfinder',
+  {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   

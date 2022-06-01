@@ -2,7 +2,7 @@
   "name": "foodtruckfinder",
   "version": "1.0.0",
   "description": "An app to locate, review and save food trucks\"",
-  "main": "server/server.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
     "start": "node server/server.js",
