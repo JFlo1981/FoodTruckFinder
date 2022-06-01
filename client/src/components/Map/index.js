@@ -5,12 +5,10 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
-
 import mapStyles from "../MapStyle";
 import austinData from "../data";
 import pic from "../icon.svg";
 import { Link } from "@chakra-ui/react";
-// import marker from "../Marker";
 
 const libraries = ["places"];
 const mapContainerStyle = {
@@ -79,11 +77,6 @@ function App() {
             </div>
           </InfoWindow>
         )}
-        {/* <Marker position={{ lat: 30.2672, lng: -97.7431 }} icon={{
-              url: pic,
-              scaledSize: new window.google.maps.Size(30,30),
-            }}></Marker> */}
-        {/* {console.log(austinData[0].coordinates.latitude)} */}
       </GoogleMap>
     </div>
   );

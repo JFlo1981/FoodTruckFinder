@@ -24,6 +24,7 @@ const SignupOwner = () => {
     username: "",
     email: "",
     password: "",
+    isOwner: true,
   });
 
   // Use mutation from auth.js
@@ -44,12 +45,15 @@ const SignupOwner = () => {
     event.preventDefault();
 
     console.log({ ...formState });
+
     // use try/catch to use database mutation
     // use Auth to assign new token and set to "logged-in"
     try {
       const { data } = await addUser({
-        variables: { ...formState, isOwner: true },
+        variables: { ...formState },
       });
+
+      console.log(data);
 
       Auth.login(data.addUser.token);
     } catch (e) {

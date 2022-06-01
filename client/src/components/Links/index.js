@@ -4,6 +4,7 @@ import { Link } from "@chakra-ui/react";
 
 const Links = () => {
   console.log(Auth.getProfile().data.isOwner);
+  console.log(Auth.getProfile().data);
 
   // User Dashboard Link
   const userLinks = (
