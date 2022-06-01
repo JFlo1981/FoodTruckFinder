@@ -10,6 +10,86 @@ import {
   Link,
   useBreakpointValue,
 } from "@chakra-ui/react";
+import Auth from "../utils/auth";
+
+const loginOptions = (
+  <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
+    <Flex p={8} flex={1} align={"center"} justify={"center"}>
+      <Stack spacing={6} w={"full"} maxW={"lg"}>
+        <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
+          <Text
+            as={"span"}
+            position={"relative"}
+            _after={{
+              content: "''",
+              width: "full",
+
+              position: "absolute",
+              bottom: 1,
+              left: 0,
+              bg: "blue.400",
+              zIndex: -1,
+            }}
+          >
+            Find Food Trucks
+          </Text>
+          <br />{" "}
+          <Text color={"blue.400"} as={"span"}>
+            Or Register Your Truck
+          </Text>{" "}
+        </Heading>
+        <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
+          Food Truck Finder offers you the ability to locate trucks in your
+          area, leave reviews, and save your favorite trucks!
+        </Text>
+        <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+          <Button
+            rounded={"full"}
+            bg={"green.400"}
+            color={"white"}
+            _hover={{
+              bg: "green.500",
+            }}
+          >
+            <Link href={"/portal"}>I am a New User</Link>
+          </Button>
+          <Button rounded={"full"}>
+            <Link href={"/portal"}>User Login</Link>
+          </Button>
+        </Stack>
+        <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
+          Own a truck? Register your business information so Users locate your
+          truck and swing by!
+        </Text>
+
+        <Stack direction={{ base: "column", md: "row" }} spacing={4}>
+          <Button
+            rounded={"full"}
+            bg={"blue.400"}
+            color={"white"}
+            _hover={{
+              bg: "blue.500",
+            }}
+          >
+            <Link href={"/portal/owner"}>I want to Regiester My Truck</Link>
+          </Button>
+          <Button rounded={"full"}>
+            <Link href={"/portal/owner"}>Owner Login</Link>
+          </Button>
+        </Stack>
+      </Stack>
+    </Flex>
+    <Flex flex={1}>
+      <Image
+        alt={"Login Image"}
+        objectFit={"cover"}
+        src={
+          "https://images.unsplash.com/photo-1604467715878-83e57e8bc129?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776"
+        }
+      />
+    </Flex>
+  </Stack>
+);
 
 function Home() {
   return (
@@ -51,80 +131,8 @@ function Home() {
           </Stack>
         </VStack>
       </Flex>
-      <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
-        <Flex p={8} flex={1} align={"center"} justify={"center"}>
-          <Stack spacing={6} w={"full"} maxW={"lg"}>
-            <Heading fontSize={{ base: "3xl", md: "4xl", lg: "5xl" }}>
-              <Text
-                as={"span"}
-                position={"relative"}
-                _after={{
-                  content: "''",
-                  width: "full",
-                  height: useBreakpointValue({ base: "20%", md: "30%" }),
-                  position: "absolute",
-                  bottom: 1,
-                  left: 0,
-                  bg: "blue.400",
-                  zIndex: -1,
-                }}
-              >
-                Find Food Trucks
-              </Text>
-              <br />{" "}
-              <Text color={"blue.400"} as={"span"}>
-                Or Register Your Truck
-              </Text>{" "}
-            </Heading>
-            <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
-              Food Truck Finder offers you the ability to locate trucks in your
-              area, leave reviews, and save your favorite trucks!
-            </Text>
-            <Stack direction={{ base: "column", md: "row" }} spacing={4}>
-              <Button
-                rounded={"full"}
-                bg={"green.400"}
-                color={"white"}
-                _hover={{
-                  bg: "green.500",
-                }}
-              >
-                <Link href={"/signup"}>I am a New User</Link>
-              </Button>
-              <Button rounded={"full"}>
-                <Link href={"/login"}>User Login</Link>
-              </Button>
-            </Stack>
-            <Text fontSize={{ base: "md", lg: "lg" }} color={"gray.500"}>
-              Own a truck? Register your business information so Users locate
-              your truck and swing by!
-            </Text>
 
-            <Stack direction={{ base: "column", md: "row" }} spacing={4}>
-              <Button
-                rounded={"full"}
-                bg={"blue.400"}
-                color={"white"}
-                _hover={{
-                  bg: "blue.500",
-                }}
-              >
-                I am a Truck Owner
-              </Button>
-              <Button rounded={"full"}>Owner Login</Button>
-            </Stack>
-          </Stack>
-        </Flex>
-        <Flex flex={1}>
-          <Image
-            alt={"Login Image"}
-            objectFit={"cover"}
-            src={
-              "https://images.unsplash.com/photo-1604467715878-83e57e8bc129?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=776"
-            }
-          />
-        </Flex>
-      </Stack>
+      {Auth.loggedIn() ? <></> : <>{loginOptions}</>}
     </div>
   );
 }

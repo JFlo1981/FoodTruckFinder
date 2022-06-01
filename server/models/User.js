@@ -1,8 +1,9 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt');
+const { Schema, model } = require("mongoose");
+const bcrypt = require("bcrypt");
 
 // import schema from Truck.js
-const truckSchema = require('./Truck');
+const truckSchema = require("./Truck");
+const Review = require("./Review");
 
 const userSchema = new Schema(
   {
@@ -15,13 +16,19 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/.+@.+\..+/, 'Must use a valid email address'],
+      match: [/.+@.+\..+/, "Must use a valid email address"],
     },
     password: {
       type: String,
       required: true,
     },
-    savedTrucks: [truckSchema],
+    isOwner: {
+      type: Boolean,
+      default: false,
+      required: true,
+    },
+    savedTrucks: [{ type: Schema.Types.ObjectId, ref: "Truck" }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: "Review" }],
   },
   {
     toJSON: {
@@ -30,8 +37,8 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.pre('save', async function (next) {
-  if (this.isNew || this.isModified('password')) {
+userSchema.pre("save", async function (next) {
+  if (this.isNew || this.isModified("password")) {
     const saltRounds = 10;
     this.password = await bcrypt.hash(this.password, saltRounds);
   }
@@ -43,10 +50,10 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-userSchema.virtual('truckCount').get(function () {
+userSchema.virtual("truckCount").get(function () {
   return this.savedTrucks.length;
 });
 
-const User = model('User', userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

@@ -15,17 +15,8 @@ import {
   ListItem,
 } from "@chakra-ui/react";
 
-export default function Profile() {
-  const profile = {
-    name: "Popcornopolis",
-    hours: "9:00am - 11:00pm",
-    description:
-      "This is a popcorn foodtruck which sells any kind of popcorn you can think of.",
-    website: "https://popcornopolis.com",
-    email: "popolopis@gmail.com",
-    owner: "John Doe, Polly Popcorn",
-  };
-
+const Profile = (truck) => {
+  const myTruck = truck.truck.me.savedTrucks[0];
   return (
     <Container maxW={"7xl"}>
       <SimpleGrid
@@ -36,10 +27,8 @@ export default function Profile() {
         <Flex>
           <Image
             rounded={"md"}
-            alt={"product image"}
-            src={
-              "https://images.unsplash.com/photo-1565097158282-1094bd0fe46a?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870"
-            }
+            alt={"Truck image"}
+            src={myTruck.image}
             fit={"cover"}
             align={"center"}
             w={"100%"}
@@ -53,14 +42,14 @@ export default function Profile() {
               fontWeight={600}
               fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
             >
-              {profile.name}
+              {myTruck.truckName}
             </Heading>
             <Text
               color={useColorModeValue("gray.900", "gray.400")}
               fontWeight={300}
               fontSize={"2xl"}
             >
-              {profile.hours}
+              {myTruck.hours}
             </Text>
           </Box>
 
@@ -79,7 +68,7 @@ export default function Profile() {
                 fontSize={"2xl"}
                 fontWeight={"300"}
               >
-                {profile.description}
+                {myTruck.description}
               </Text>
             </VStack>
             <Box>
@@ -95,10 +84,30 @@ export default function Profile() {
 
               <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
                 <List spacing={2}>
-                  <ListItem>Website: {profile.website}</ListItem>
-                  <ListItem>Email: {profile.email}</ListItem>
-                  <ListItem>Owner Names: {profile.owner}</ListItem>
+                  <ListItem>Website: {myTruck.link}</ListItem>
                 </List>
+              </SimpleGrid>
+            </Box>
+
+            <Box>
+              <Text
+                fontSize={{ base: "16px", lg: "18px" }}
+                color={useColorModeValue("yellow.500", "yellow.300")}
+                fontWeight={"500"}
+                textTransform={"uppercase"}
+                mb={"4"}
+              >
+                Menu
+              </Text>
+              <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
+                <Image
+                  rounded={"md"}
+                  alt={"product image"}
+                  src={myTruck.menu}
+                  fit={"cover"}
+                  align={"center"}
+                  w={"100%"}
+                />
               </SimpleGrid>
             </Box>
           </Stack>
@@ -121,10 +130,12 @@ export default function Profile() {
           </Button>
 
           <Stack direction="row" alignItems="center" justifyContent={"center"}>
-            <Text>Menu Functionality Coming Soon!</Text>
+            <Text>Update your Truck Information</Text>
           </Stack>
         </Stack>
       </SimpleGrid>
     </Container>
   );
-}
+};
+
+export default Profile;
