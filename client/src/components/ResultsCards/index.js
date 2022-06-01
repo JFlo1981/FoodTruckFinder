@@ -1,56 +1,65 @@
 import React from "react";
-import { Box, Image, Flex, Button, Link } from "@chakra-ui/react";
+import { Box, Image, Button, Link } from "@chakra-ui/react";
+import austinData from "../data";
 
-export default function resultCards() {
-  const property = {
-    imageUrl:
-      "https://images.unsplash.com/photo-1620589125156-fd5028c5e05b?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1787",
-    imageAlt: "Rear view of modern home with pool",
-    title: "Fish & Chips",
-    hours: "9am-5pm",
-    reviewCount: 34,
-    rating: 4,
-  };
-
+const resultCards = () => {
+  // console.log(austinData);
   return (
-    <Flex p={50} w="full" alignItems="center" justifyContent="center">
-      <Box maxW="sm" borderWidth="1px" rounded="lg" shadow="lg">
-        <Image
-          src={property.imageUrl}
-          alt={property.imageAlt}
-          roundedTop="lg"
-        />
+    <>
+      {austinData &&
+        austinData.map(
+          (truck, index) =>
+            index < 5 && (
+              <Box
+                key={truck.id}
+                maxW="sm"
+                borderWidth="1px"
+                rounded="lg"
+                shadow="lg"
+              >
+                <Image
+                  src={truck.image_url}
+                  alt={"food truck"}
+                  roundedTop="lg"
+                  height={"200px"}
+                  objectFit={"cover"}
+                  width={"100%"}
+                />
 
-        <Flex alignItems="center" justifyContent="space-around">
-          <Box p="6">
-            <Box
-              mt="1"
-              fontWeight="semibold"
-              as="h4"
-              lineHeight="tight"
-              isTruncated
-            >
-              {property.title}
-            </Box>
+                <Box textAlign={"center"}>
+                  <Box
+                    mt="1"
+                    fontWeight="semibold"
+                    as="h4"
+                    lineHeight="tight"
+                    isTruncated
+                  >
+                    {truck.name}
+                  </Box>
 
-            <Box>{property.hours}</Box>
-          </Box>
+                  <Box>Rating: {truck.rating} stars</Box>
 
-          <Button
-            rounded={"full"}
-            fontSize={"sm"}
-            fontWeight={600}
-            color={"white"}
-            bg={"green.400"}
-            _hover={{
-              bg: "green.300",
-            }}
-            marginTop={"5"}
-          >
-            <Link href={"/trucks"}>View Truck</Link>
-          </Button>
-        </Flex>
-      </Box>
-    </Flex>
+                  <Button
+                    rounded={"full"}
+                    fontSize={"sm"}
+                    fontWeight={600}
+                    color={"white"}
+                    bg={"green.400"}
+                    _hover={{
+                      bg: "green.300",
+                    }}
+                    marginTop={"2"}
+                    marginBottom={"4"}
+                    width={"80%"}
+                  >
+                    <Link href={`/truck/${truck.id}`}>View Truck</Link>
+                  </Button>
+                </Box>
+              </Box>
+            )
+        )}
+    </>
   );
-}
+};
+
+export default resultCards;

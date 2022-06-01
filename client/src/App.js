@@ -2,24 +2,25 @@ import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import {
-  ApolloProvider,
   ApolloClient,
   InMemoryCache,
+  ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Header from "./components/Header";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
 import About from "./pages/About";
 import Terms from "./pages/Terms";
 import Dashboard from "./pages/Dashboard";
 import Account from "./pages/Account";
+import TruckReviews from "./pages/TruckReviews";
 import Footer from "./components/Footer";
 import NoMatch from "./pages/NoMatch";
 import SingleTruck from "./pages/singleTruck";
+import Portal from "./pages/Portal";
+import OwnerPortal from "./pages/OwnerPortal";
 
 // Establish a new link to the GraphQL server
 const httpLink = createHttpLink({
@@ -53,11 +54,12 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/search" element={<Search />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/portal" element={<Portal />} />
+              <Route path="/portal/owner" element={<OwnerPortal />} />
+              <Route path="/reviews/:username" element={<Dashboard />} />
               <Route path="/account" element={<Account />} />
-              <Route path="/trucks" element={<SingleTruck />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/truck/:id" element={<SingleTruck />} />
+              <Route path="/truck/reviews/:id" element={<TruckReviews />} />
               <Route path="/about" element={<About />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="*" element={<NoMatch />} />
