@@ -10,15 +10,15 @@ This app was refactored from an existing, fully functional MERN app setup with a
 
 #### Main Page:
 
-![Screenshot1](add link)
+![Screen Shot 2022-06-01 at 12 30 04 AM](https://user-images.githubusercontent.com/95142863/171335137-b3fe9ebe-a7fb-4e86-868b-638267e99f87.png)
 
 #### Search Results:
 
-![Screenshot2](add link)
+![Screen Shot 2022-06-01 at 12 31 21 AM](https://user-images.githubusercontent.com/95142863/171335202-2d32d4c9-96ec-40bd-bfb8-b0bf08f98780.png)
 
 #### Food Truck Listing:
 
-![Truck Listing](add link)
+![Screen Shot 2022-06-01 at 12 40 28 AM](https://user-images.githubusercontent.com/95142863/171335579-4cef7171-803c-4eb5-b27e-7f7e5fb560d4.png)
 
 ## Table of Contents
 
