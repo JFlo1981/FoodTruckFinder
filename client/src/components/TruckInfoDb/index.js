@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useQuery } from "@apollo/client";
 import { QUERY_TRUCK } from "../../utils/queries";
+import ReviewsDb from "../ReviewsDb";
 
 function TruckInfoDb() {
   const { id: truckId } = useParams();
@@ -53,9 +54,6 @@ function TruckInfoDb() {
                 {truck.link}
               </a>
             </span>
-          </ListItem>
-          <ListItem className="bold">
-            Email: <span className="unbold">{truck.email}</span>
           </ListItem>
         </List>
       </SimpleGrid>
@@ -103,19 +101,7 @@ function TruckInfoDb() {
         Recent Reviews
       </Text>
 
-      <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
-        {/* <Reviews reviews={truck.reviews} /> */}
-        <Link
-          mx={2}
-          cursor="pointer"
-          textDecor="underline"
-          wordBreak="break-word"
-          href={`/truck/reviews/${truck._id}`}
-          marginBottom={10}
-        >
-          Leave a Review
-        </Link>
-      </SimpleGrid>
+      <ReviewsDb reviews={truck.reviews} />
     </Box>
   );
 

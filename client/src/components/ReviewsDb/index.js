@@ -7,10 +7,6 @@ import {
   useColorModeValue,
   Icon,
 } from "@chakra-ui/react";
-// import Response from "../Response";
-
-// {/* {!review.response ? <></> : <Response {...review} />} */}
-//               {/* {reply} */}
 
 const backgrounds = [
   `url("data:image/svg+xml, %3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'560\' height=\'185\' viewBox=\'0 0 560 185\' fill=\'none\'%3E%3Cellipse cx=\'102.633\' cy=\'61.0737\' rx=\'102.633\' ry=\'61.0737\' fill=\'%23ED64A6\' /%3E%3Cellipse cx=\'399.573\' cy=\'123.926\' rx=\'102.633\' ry=\'61.0737\' fill=\'%23F56565\' /%3E%3Cellipse cx=\'366.192\' cy=\'73.2292\' rx=\'193.808\' ry=\'73.2292\' fill=\'%2338B2AC\' /%3E%3Cellipse cx=\'222.705\' cy=\'110.585\' rx=\'193.808\' ry=\'73.2292\' fill=\'%23ED8936\' /%3E%3C/svg%3E")`,
@@ -66,7 +62,7 @@ function TestimonialCard(props) {
         <chakra.p
           fontFamily={"Inter"}
           fontWeight={"medium"}
-          fontSize={"15px"}
+          fontSize={"17px"}
           pb={4}
           key={createdAt}
         >
@@ -74,14 +70,10 @@ function TestimonialCard(props) {
         </chakra.p>
         <chakra.p fontFamily={"Work Sans"} fontWeight={"bold"} fontSize={14}>
           {createdAt}
-          <chakra.span
-            fontFamily={"Inter"}
-            fontWeight={"medium"}
-            color={"gray.500"}
-          >
+          <span fontFamily={"Inter"} fontWeight={"medium"} color={"gray.500"}>
             {" "}
             - {username}
-          </chakra.span>
+          </span>
         </chakra.p>
       </Flex>
     </Flex>
@@ -89,6 +81,20 @@ function TestimonialCard(props) {
 }
 
 const Reviews = ({ reviews }) => {
+  if (!reviews[0]) {
+    return (
+      <Box>
+        <chakra.p
+          textAlign={"center"}
+          marginTop={"50px"}
+          marginBottom={"150px"}
+        >
+          Be the First to Leave a Review!
+        </chakra.p>
+      </Box>
+    );
+  }
+
   return (
     <Flex
       textAlign={"center"}

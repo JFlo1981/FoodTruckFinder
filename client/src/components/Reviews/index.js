@@ -1,6 +1,12 @@
 import React from "react";
-import { chakra, Flex, Box, SimpleGrid, Icon } from "@chakra-ui/react";
-// import Response from "../Response";
+import {
+  chakra,
+  Flex,
+  Box,
+  SimpleGrid,
+  Icon,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import austinData from "../data";
 import { useParams } from "react-router-dom";
 
@@ -23,6 +29,7 @@ function TestimonialCard(props) {
       p={10}
       justifyContent={"space-between"}
       position={"relative"}
+      bg={useColorModeValue("white", "gray.800")}
       _after={{
         content: '""',
         position: "absolute",
@@ -59,7 +66,7 @@ function TestimonialCard(props) {
           fontWeight={"medium"}
           fontSize={"17px"}
           pb={4}
-          marginTop={7}
+          key={truckName}
         >
           "{text}"
         </chakra.p>
@@ -76,10 +83,16 @@ function TestimonialCard(props) {
 const Reviews = ({ reviews, truckName }) => {
   // console.log(reviews);
   const { id: truckId } = useParams();
-  if (!reviews) {
+  if (!reviews[0]) {
     return (
       <Box>
-        <chakra.p>Be the First to Leave a Review!</chakra.p>
+        <chakra.p
+          textAlign={"center"}
+          marginTop={"50px"}
+          marginBottom={"150px"}
+        >
+          Be the First to Leave a Review!
+        </chakra.p>
       </Box>
     );
   }

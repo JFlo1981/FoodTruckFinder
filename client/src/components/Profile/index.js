@@ -85,8 +85,6 @@ const Profile = (truck) => {
               <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
                 <List spacing={2}>
                   <ListItem>Website: {myTruck.link}</ListItem>
-                  <ListItem>Email: {myTruck.email}</ListItem>
-                  {/* <ListItem>Owner Names: {myTruck.owner}</ListItem> */}
                 </List>
               </SimpleGrid>
             </Box>

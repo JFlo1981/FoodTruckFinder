@@ -10,18 +10,19 @@ import {
   Heading,
   SimpleGrid,
   StackDivider,
-  //   useColorModeValue,
   List,
   Link,
   ListItem,
 } from "@chakra-ui/react";
 import austinData from "../data";
+import Reviews from "../Reviews";
 
 function TruckInfo() {
   const { id: truckId } = useParams();
 
   // filter through the AustinData file for the truck we want to display
   const truck = austinData.filter((truck) => truck.id === truckId);
+  console.log();
 
   return (
     <div>
@@ -54,25 +55,16 @@ function TruckInfo() {
                 >
                   {name}
                 </Heading>
-                <Text
-                  // color={useColorModeValue("gray.900", "gray.400")}
-                  fontWeight={300}
-                  fontSize={"2xl"}
-                >
+                <Text fontWeight={300} fontSize={"2xl"}>
                   {truck.rating}
                 </Text>
-                <Flex
-                  alignItems="center"
-                  mt={2}
-                  // color={useColorModeValue("gray.700", "gray.200")}
-                >
-                  {/* <span>{reviewLength} Reviews</span> */}
+                <Flex alignItems="center" mt={2}>
+                  <span>{truck[0].reviews.length} Reviews</span>
 
                   <Link
                     mx={2}
                     cursor="pointer"
                     textDecor="underline"
-                    // color={useColorModeValue("blue.600", "blue.400")}
                     wordBreak="break-word"
                     href={`/truck/reviews/${id}`}
                   >
@@ -84,18 +76,10 @@ function TruckInfo() {
               <Stack
                 spacing={{ base: 4, sm: 6 }}
                 direction={"column"}
-                divider={
-                  <StackDivider
-                  // borderColor={useColorModeValue("gray.200", "gray.600")}
-                  />
-                }
+                divider={<StackDivider />}
               >
                 <VStack spacing={{ base: 4, sm: 6 }}>
-                  <Text
-                    // color={useColorModeValue("gray.500", "gray.400")}
-                    fontSize={"2xl"}
-                    fontWeight={"300"}
-                  >
+                  <Text fontSize={"2xl"} fontWeight={"300"}>
                     {truck.name}
                   </Text>
                 </VStack>
@@ -103,7 +87,6 @@ function TruckInfo() {
                 <Box>
                   <Text
                     fontSize={{ base: "16px", lg: "18px" }}
-                    // color={useColorModeValue("yellow.500", "yellow.300")}
                     fontWeight={"500"}
                     textTransform={"uppercase"}
                     mb={"4"}
@@ -166,7 +149,6 @@ function TruckInfo() {
                 <Box>
                   <Text
                     fontSize={{ base: "16px", lg: "18px" }}
-                    // color={useColorModeValue("yellow.500", "yellow.300")}
                     fontWeight={"500"}
                     textTransform={"uppercase"}
                     mb={"4"}
@@ -174,20 +156,7 @@ function TruckInfo() {
                     Recent Reviews
                   </Text>
 
-                  <SimpleGrid columns={{ base: 1, md: 1 }} spacing={10}>
-                    {/* <Reviews reviews={truck.reviews} /> */}
-                    <Link
-                      mx={2}
-                      cursor="pointer"
-                      textDecor="underline"
-                      // color={useColorModeValue("blue.600", "blue.400")}
-                      wordBreak="break-word"
-                      href={`/truck/reviews/${id}`}
-                      marginBottom={10}
-                    >
-                      Leave a Review
-                    </Link>
-                  </SimpleGrid>
+                  <Reviews reviews={truck[0].reviews} />
                 </Box>
               </Stack>
             </Stack>
@@ -199,6 +168,3 @@ function TruckInfo() {
 }
 
 export default TruckInfo;
-
-// console.log(truck.findIndex(test));
-// const reviewLength = truck.reviews.length;
