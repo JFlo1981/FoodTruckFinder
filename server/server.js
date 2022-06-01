@@ -15,6 +15,11 @@ const server = new ApolloServer({
 
 const app = express();
 
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:FoodTruckFinder', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
