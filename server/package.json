@@ -1,7 +1,7 @@
 {
   "name": "foodtruckfinder",
   "version": "1.0.0",
-  "description": "",
+  "description": "its a food truck finder",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
