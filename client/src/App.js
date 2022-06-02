@@ -62,7 +62,6 @@ function App() {
               <Route path="/truck/reviews/:id" element={<TruckReviews />} />
               <Route path="/about" element={<About />} />
               <Route path="/terms" element={<Terms />} />
-              <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
           <Footer />
